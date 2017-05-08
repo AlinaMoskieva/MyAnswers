@@ -4,5 +4,5 @@ class User < ApplicationRecord
 
   validates :full_name, presence: true
 
-  has_many :couses
+  has_many :couses, through: :subscriptions
 end
