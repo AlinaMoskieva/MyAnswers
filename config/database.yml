@@ -4,15 +4,13 @@ defaults: &defaults
   min_messages: warning
   timeout: 5000
   pool: <%= [ENV.fetch("MAX_THREADS", 5), ENV.fetch("DB_POOL", 5)].max %>
-  username: postgres
-  password: moskieva
 
 development:
-  database: my_answers_dev
+  database: <%= ENV.fetch("DATABASE_NAME", File.basename(Rails.root)) %>_dev
   <<: *defaults
 
 test:
-  database: my_answers_test
+  database: <%= ENV.fetch("DATABASE_NAME", File.basename(Rails.root)) %>_test
   <<: *defaults
 
 production: &deploy

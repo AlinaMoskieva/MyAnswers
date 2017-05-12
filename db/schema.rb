@@ -31,14 +31,6 @@ ActiveRecord::Schema.define(version: 20170512161529) do
     t.index ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
   end
 
-  create_table "units", force: :cascade do |t|
-    t.integer  "course_id",  null: false
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_units_on_course_id", using: :btree
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

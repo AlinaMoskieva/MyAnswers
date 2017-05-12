@@ -1,9 +1,9 @@
-h2 Courses
-- courses.each do |course|
-  ul
-    li
+.large-8.large-offset-1.columns
+  h2 Courses
+  - courses.each do |course|
+    h4
       = link_to course.title, course_path(course)
-    li
+    span
       - if user_signed_in?
         - if current_user.subscribed?(course.id)
           = link_to "Subscribe", subscriptions_path(course_id: course.id) , method: :post
