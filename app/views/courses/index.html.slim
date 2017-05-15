@@ -1,5 +1,5 @@
-.large-8.large-offset-1.columns
-  h2 Courses
+.large-10.large-offset-1.columns
+  h5.tag-cloud-title= "Courses"
   - courses.each do |course|
     h4
       = link_to course.title, course_path(course)

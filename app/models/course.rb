@@ -2,5 +2,5 @@ class Course < ApplicationRecord
   has_many :users, through: :subscriptions
   has_many :units, dependent: :destroy
 
-  validates :description, presence: true
+  validates :description, :title, presence: true
 end
