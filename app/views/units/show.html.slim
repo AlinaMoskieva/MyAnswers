@@ -1,0 +1,5 @@
+.row.large-10.columns.large-offset-1
+  h5.tag-cloud-title = unit.name
+  p= unit.description
+  .tag-cloud
+    = link_to unit.course_name, course_path(unit.course), class: "tag-cloud-individual-tag"
