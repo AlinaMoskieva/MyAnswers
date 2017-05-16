@@ -1,4 +1,7 @@
 h5.tag-cloud-title= "Units"
 - units.each do |unit|
-  li
-    = link_to unit.name, unit_path(unit)
+  .large-10.columns
+    li
+      = link_to unit.name, unit_path(unit)
+  .large-2.columns
+    = render "units/subscribe", unit: unit

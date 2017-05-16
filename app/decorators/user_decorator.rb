@@ -8,4 +8,8 @@ class UserDecorator < ApplicationDecorator
   def subscribed?(course_id)
     Subscription.where(course_id: course_id, user_id: id).empty?
   end
+
+  def start?(unit_id)
+    UserUnit.where(unit_id: unit_id, user_id: id).empty?
+  end
 end

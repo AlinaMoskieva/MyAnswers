@@ -1,11 +1,6 @@
 .large-8.large-offset-1.columns
   h5.tag-cloud-title= course.title
   p= course.description
-  span
-    - if user_signed_in?
-      - if current_user.subscribed?(course.id)
-        = link_to "Subscribe", subscriptions_path(course_id: course.id) , method: :post
-      - else
-        = link_to "Unsubscribe", Subscription.where(course_id: course.id, user_id: current_user.id).first, method: :delete
+  .large-2.large-offset-10.columns
+    = render "subscribe_block", course: course
   = render "units/list", units: units
-
