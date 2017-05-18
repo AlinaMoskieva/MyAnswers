@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   resources :courses, only: %i(index show)
   resources :subscriptions, only: %i(create destroy)
-  resources :units, only: %i(show)
   resources :user_units, only: %i(create destroy)
+
+  resources :units, only: %i(show) do
+    resources :exercises, only: %i(show)
+  end
 end
