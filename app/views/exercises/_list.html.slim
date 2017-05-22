@@ -1,0 +1,10 @@
+h5.tag-cloud-title= "Exercises"
+.large-12.columns
+  ol
+    - exercises.each do |exercise|
+      .large-10.columns
+        li
+          = exercise.question
+      .large-2.columns
+        - if user_signed_in?
+          = link_to "I want to answer", unit_exercise_path(exercise.unit, exercise), class: "radius tiny hollow button primary"
