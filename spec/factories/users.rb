@@ -5,6 +5,7 @@ FactoryGirl.define do
     password "123456"
     password_confirmation { password }
     confirmed_at 1.hour.ago
+    role "user"
   end
 
   trait :not_confirmed do
@@ -13,5 +14,9 @@ FactoryGirl.define do
     after(:create) do |user|
       user.update(confirmation_sent_at: 3.days.ago)
     end
+  end
+
+  trait :admin do
+    role "admin"
   end
 end

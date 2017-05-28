@@ -1,0 +1,6 @@
+.medium-10.medium-offset-1.columns
+  h5.tag-cloud-title= "Widget"
+  - widgets.each do |widget|
+    .medium-10.columns
+      li
+        = link_to widget.name, widget_path(widget)
