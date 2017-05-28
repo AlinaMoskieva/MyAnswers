@@ -1,0 +1,5 @@
+h5.tag-cloud-title= "Темы"
+- subjects.each do |subject|
+  .large-10.columns
+    li
+      = link_to subject.name, subject_path(subject)
