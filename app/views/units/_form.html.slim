@@ -1,4 +1,6 @@
 = simple_form_for(unit) do |f|
   = f.input :name
+  = f.input :subject_id, collection: subjects
+  = f.input :course_id, collection: courses
   = f.input :description, input_html: { rows: 4 }, as: :text
   = f.button :submit, "Сохранить"

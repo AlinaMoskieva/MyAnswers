@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :courses
   resources :subscriptions, only: %i(create destroy)
   resources :user_units, only: %i(create destroy)
+  resources :subjects
 
   resources :units do
     resources :exercises do

@@ -4,6 +4,8 @@ class UnitsController < ApplicationController
   expose :units, -> { Unit.all }
   expose_decorated :unit
 
+  expose :courses, -> { Course.all }
+  expose :subjects, -> { Subject.all }
   expose :exercises, -> { unit.exercises }
 
   def index
@@ -13,7 +15,6 @@ class UnitsController < ApplicationController
   end
 
   def create
-    unit.course = Course.first
     unit.save
     respond_with unit
   end
@@ -26,7 +27,7 @@ class UnitsController < ApplicationController
   private
 
   def unit_params
-    params.require(:unit).permit(:name, :description)
+    params.require(:unit).permit(:name, :description, :subject_id, :course_id)
   end
 
   def authorize!
