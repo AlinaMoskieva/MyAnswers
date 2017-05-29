@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   has_many :subscriptions, dependent: :destroy
   has_many :user_units, dependent: :destroy
-  has_many :couses, through: :subscriptions
+  has_many :courses, through: :subscriptions
   has_many :units, through: :user_units
   has_many :answers, dependent: :destroy
 
