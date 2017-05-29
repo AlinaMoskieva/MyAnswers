@@ -4,7 +4,6 @@ class CoursesController < ApplicationController
   expose :courses, -> { Course.all }
   expose :course
   expose :subjects, -> { course.subjects }
-  # expose :subjects, -> { Subject.all }
 
   def create
     course.save
