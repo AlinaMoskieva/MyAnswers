@@ -1,6 +1,10 @@
 .large-8.large-offset-1.columns
-  h5.tag-cloud-title= course.title
-  p= course.description
+  h5.tag-cloud-title
+    = course.title
+  - if policy(course).manage?
+    .large-2.large-offset-10.columns
+      = link_to "Edit", edit_course_path(course), class: "radius tiny hollow button secondary"
+  p = course.description
   .large-2.large-offset-10.columns
     = render "subscribe_block", course: course
   = render "subjects/list", subjects: subjects

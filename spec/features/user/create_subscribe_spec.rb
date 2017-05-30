@@ -5,7 +5,10 @@ feature "As user I am able to create/destroy subscription" do
 
   let!(:course) { create :course }
   let!(:subscribed_course) { create :course }
-  let!(:subscription) { create :subscription, course: subscribed_course, user: current_user }
+
+  before do
+    create :subscription, course: subscribed_course, user: current_user
+  end
 
   scenario "creates subscription" do
     visit course_path(course)
