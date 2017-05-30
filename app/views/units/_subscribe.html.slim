@@ -1,5 +1,5 @@
 - if user_signed_in?
   - if current_user.start?(unit.id)
-    = link_to "Start learning", user_units_path(unit_id: unit.id) , method: :post, class: "radius tiny hollow button secondary"
+    = link_to "Начать изучение", user_units_path(unit_id: unit.id) , method: :post, class: "radius tiny hollow button secondary"
   - else
-    = link_to "Finish", UserUnit.where(unit_id: unit.id, user_id: current_user.id).first, method: :delete, class: "radius tiny hollow button alert"
+    = link_to "Закончить", UserUnit.where(unit_id: unit.id, user_id: current_user.id).first, method: :delete, class: "radius tiny hollow button alert"

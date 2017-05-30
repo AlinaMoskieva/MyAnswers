@@ -1,5 +1,5 @@
 - if user_signed_in?
   - if current_user.subscribed?(course.id)
-    = link_to "Subscribe", subscriptions_path(course_id: course.id) , method: :post, class: "radius tiny hollow button secondary"
+    = link_to "Подписаться", subscriptions_path(course_id: course.id) , method: :post, class: "radius tiny hollow button secondary"
   - else
-    = link_to "Unsubscribe", Subscription.where(course_id: course.id, user_id: current_user.id).first, method: :delete, class: "radius tiny hollow button alert"
+    = link_to "Отписаться", Subscription.where(course_id: course.id, user_id: current_user.id).first, method: :delete, class: "radius tiny hollow button alert"
