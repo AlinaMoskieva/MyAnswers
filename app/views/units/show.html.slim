@@ -2,6 +2,6 @@
   h5.tag-cloud-title = unit.name
   p= unit.description
   .tag-cloud
-    = link_to unit.course_name, course_path(unit.course), class: "tag-cloud-individual-tag"
+    = link_to course.title, course_path(course), class: "tag-cloud-individual-tag"
 .row.large-10.columns.large-offset-1
   = render "exercises/list", exercises: exercises
