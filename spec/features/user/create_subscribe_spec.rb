@@ -12,13 +12,13 @@ feature "As user I am able to create/destroy subscription" do
 
   scenario "creates subscription" do
     visit course_path(course)
-    click_link "Subscribe"
+    click_link "Подписаться"
     expect(page).to have_content(I18n.t("flash.actions.create.notice", resource_name: Subscription))
   end
 
   scenario "destroy subscription" do
     visit course_path(subscribed_course)
-    click_link "Unsubscribe"
+    click_link "Отписаться"
     expect(page).to have_content(I18n.t("flash.actions.destroy.notice", resource_name: Subscription))
   end
 end

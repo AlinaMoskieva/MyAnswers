@@ -4,6 +4,7 @@ class UnitsController < ApplicationController
   expose :units, -> { Unit.all }
   expose_decorated :unit
 
+  expose :course, -> { unit.subject.course }
   expose :courses, -> { Course.all }
   expose :subjects, -> { Subject.all }
   expose :exercises, -> { unit.exercises }
