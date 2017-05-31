@@ -2,8 +2,8 @@
   h5.tag-cloud-title
     = course.title
   - if policy(course).manage?
-    .large-2.large-offset-10.columns
-      = link_to "Edit", edit_course_path(course), class: "radius tiny hollow button secondary"
+    .large-3.large-offset-9.columns
+      = link_to "Редактировать курс", edit_course_path(course), class: "radius tiny hollow button secondary"
   p = course.description
   .large-2.large-offset-10.columns
     = render "subscribe_block", course: course

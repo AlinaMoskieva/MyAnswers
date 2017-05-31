@@ -1,0 +1,11 @@
+.row
+  .medium-10.columns
+    b Текст ответа:
+    =< answer_variant.text
+    br
+    b Правильный:
+    =< answer_variant.truthy
+
+  .medium-2.columns
+    - if policy(answer_variant).manage?
+      = link_to "Редактировать", edit_unit_exercise_answer_variant_path(answer_variant.exercise.unit, answer_variant.exercise, answer_variant), class: "radius tiny hollow button secondary"

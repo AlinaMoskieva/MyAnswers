@@ -1,0 +1,5 @@
+= simple_form_for([unit, exercise, answer_variant]) do |f|
+    = f.hidden_field :exercise_id, value: exercise.id
+    = f.input :text
+    = f.input :truthy
+    => f.button :submit, "Сохранить"

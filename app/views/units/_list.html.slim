@@ -1,4 +1,7 @@
 h5.tag-cloud-title= "Модули"
+- if policy(subject).manage?
+    .large-2.large-offset-10.columns
+      = link_to "Добавить модуль", new_unit_path, class: "radius tiny hollow button secondary"
 - units.each do |unit|
   .large-10.columns
     li

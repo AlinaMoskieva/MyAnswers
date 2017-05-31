@@ -1,0 +1,6 @@
+= simple_form_for([unit, exercise]) do |f|
+  = f.hidden_field :unit_id, value: unit.id
+  = f.input :theory
+  = f.input :question
+  = f.input :index
+  = f.button :submit, "Create"

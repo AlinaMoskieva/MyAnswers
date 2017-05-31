@@ -1,11 +1,10 @@
 .row
   .large-10.columns.large-offset-1
     h5.tag-cloud-title= "Exercise"
-  .large-7.columns.large-centered.columns
-    h4 Question:
-    = exercise.question
 .row
   .large-5.columns.large-offset-2
+    h4 Question:
+    = exercise.question
     - if user_signed_in?
       = render "answers/form", unit: exercise.unit, exercise: exercise
 

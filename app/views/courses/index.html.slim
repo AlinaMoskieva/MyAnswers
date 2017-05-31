@@ -1,5 +1,8 @@
 .large-10.large-offset-1.columns
   h5.tag-cloud-title="Курсы"
+  - if policy(course).manage?
+    .large-2.large-offset-10.columns
+      = link_to "Добавить курс", new_course_path, class: "radius hollow button secondary"
   - courses.each do |course|
     .large-10.columns
       li

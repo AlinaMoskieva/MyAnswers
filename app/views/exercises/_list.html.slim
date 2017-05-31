@@ -1,10 +1,19 @@
 h5.tag-cloud-title= "Упражнения"
+- if policy(unit).manage?
+  .large-2.large-offset-10.columns
+    = link_to "Добавить упражнение", new_unit_exercise_path(unit), class: "radius tiny hollow button secondary"
 .large-12.columns
   ol
     - exercises.each do |exercise|
-      .large-10.columns
+      .large-8.columns
         li
-          = exercise.question
+          - if policy(unit).manage?
+            = link_to exercise.question, unit_exercises_list_path(exercise.unit, exercise)
+          - else
+            = exercise.question
+      .large-2.columns
+        - if policy(unit).manage?
+          = link_to "Добавить вариант ответа", new_unit_exercise_answer_variant_path(exercise.unit, exercise), class: "radius tiny hollow button primary"
       .large-2.columns
         - if user_signed_in?
           = link_to "I want to answer", unit_exercise_path(exercise.unit, exercise), class: "radius tiny hollow button primary"
