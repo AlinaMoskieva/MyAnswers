@@ -1,0 +1,247 @@
+.row
+  h2="Tasks"
+
+.row style=("max-width: 70rem")
+  .columns
+    ul#example-tabs.tabs data-tabs="" 
+      li.tabs-title.is-active
+        a aria-selected="true" href="#panel1" Множества
+      li.tabs-title
+        a href="#panel2" Булева алгебра
+      li.tabs-title
+        a href="#panel3" Элементы комбинаторики
+      li.tabs-title
+        a href="#panel4" Неориентированные графы
+      li.tabs-title
+        a href="#panel5" Ориентированные графы
+      li.tabs-title
+        a href="#panel6" Регулярные выражения
+      li.tabs-title
+        a href="#panel7" Машины Тьюринга
+    .tabs-content data-tabs-content="example-tabs" 
+      #panel1.tabs-panel.is-active
+        p One
+      #panel2.tabs-panel
+        p Two
+
+      #panel3.tabs-panel
+        p Three
+
+      #panel4.tabs-panel
+        p Four
+      #panel5.tabs-panel
+        p Five
+      #panel6.tabs-panel
+        p Six
+      #panel7.tabs-panel
+        .row style=("margin-top: 1rem;")
+          .columns
+            h2 Машины Тьюринга
+            h4 Минимальные единицы:
+            ul
+              li Терминология
+              li Построение машины Тьюринга
+              li Вычислимые языки
+              li Тезис Черча-Тьюринга
+              li Неразрешимоость проблемы остановки
+              li Теорема Рекурсии
+            br
+        .row.collapse
+          h4 Задачи
+          .medium-2.columns
+            ul#example-tabs.vertical.tabs data-tabs=""
+              li.tabs-title.is-active
+                a aria-selected="true" href="#panel1v" Таблица всех задач
+              li.tabs-title
+                a href="#panel2v" Задача 7.1
+              li.tabs-title
+                a href="#panel3v" Задача 7.2
+              li.tabs-title
+                a href="#panel4v" Задача 7.3
+          .medium-10.columns
+            .tabs-content data-tabs-content="example-tabs"
+              #panel1v.tabs-panel.is-active
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="150" Задача
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td
+                            p
+                              | Выяснить применима ли изображенная машина Тьюринга, задаваемая программой П к слову 
+                              i
+                                | P = 1
+                                sup
+                                  small 3
+                                | 01
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p
+                              | По изображенной машине Тьюринга и начальной конфигурацией&nbsp;
+                              i
+                                | K = 1
+                                sup
+                                  small 2
+                              | 01q
+                              i
+                                sub 1
+                                | 1
+                                sup
+                                  small 2
+                              | найти заключительную конфигурацию (q
+                              sub 1
+                              | - заключительное состояние)
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                        tr
+                          td
+                            p
+                              | Построить машину Тьюринга в алфавите {0, 1}, переводящую конфигурацию K
+                              i
+                                sub 1
+                                | = q
+                                sub 1
+                                | 1
+                                sup
+                                  small n
+                                | в конфигурацию K
+                                sub 0
+                                | = q
+                                sub 0
+                                | 1
+                                sup n
+                                | 01
+                                sup n
+                                | , n &ge; 1
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel2v.tabs-panel
+                h4 Задача:
+                p
+                  | Выяснить применима ли изображенная машина Тьюринга, задаваемая программой П к слову 
+                  i
+                    | P = 1
+                    sup
+                      small 3
+                    | 01
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel3v.tabs-panel
+                h4 Задача:
+                p
+                  | По изображенной машине Тьюринга и начальной конфигурацией&nbsp;
+                  i
+                    | K = 1
+                    sup
+                      small 2
+                  | 01q
+                  i
+                    sub 1
+                    | 1
+                    sup
+                      small 2
+                  | найти заключительную конфигурацию (q
+                  sub 1
+                  | - заключительное состояние)
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel4v.tabs-panel
+                h4 Задача:
+                p
+                  | Построить машину Тьюринга в алфавите {0, 1}, переводящую конфигурацию K
+                  i
+                    sub 1
+                    | = q
+                    sub 1
+                    | 1
+                    sup
+                      small n
+                    | в конфигурацию K
+                    sub 0
+                    | = q
+                    sub 0
+                    | 1
+                    sup n
+                    | 01
+                    sup n
+                    | , n &ge; 1
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+            
