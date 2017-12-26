@@ -20,43 +20,294 @@
         a href="#panel7" Машины Тьюринга
     .tabs-content data-tabs-content="example-tabs" 
       #panel1.tabs-panel.is-active
-        p One
-      #panel2.tabs-panel
-        p Two
-
-      #panel3.tabs-panel
-        p Three
-
-      #panel4.tabs-panel
-        p Four
-      #panel5.tabs-panel
         .row style=("margin-top: 1rem;")
           .columns
-            h2 Машины Тьюринга
+            h2 Множества
             h4 Минимальные единицы:
             ul
-              li Терминология
-              li Построение машины Тьюринга
-              li Вычислимые языки
-              li Тезис Черча-Тьюринга
-              li Неразрешимоость проблемы остановки
-              li Теорема Рекурсии
+              li Основные операции над множествами
+              li Мощность множества и число подмножеств любого множества
             br
         .row.collapse
           h4 Задачи
           .medium-2.columns
             ul#example-tabs.vertical.tabs data-tabs=""
               li.tabs-title.is-active
-                a aria-selected="true" href="#panel1v" Таблица всех задач
+                a aria-selected="true" href="#panel11v" Таблица всех задач
               li.tabs-title
-                a href="#panel2v" Задача 7.1
+                a href="#panel12v" Задача 7.1
               li.tabs-title
-                a href="#panel3v" Задача 7.2
+                a href="#panel13v" Задача 7.2
               li.tabs-title
-                a href="#panel4v" Задача 7.3
+                a href="#panel14v" Задача 7.3
           .medium-10.columns
             .tabs-content data-tabs-content="example-tabs"
-              #panel1v.tabs-panel.is-active
+              #panel11v.tabs-panel.is-active
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="150" Задача
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td
+                            p Выполните логическую операцию A &cup;; B, если A={a, b, 2 }, B={a, 1, 1}
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p Выполните логическую операцию A &cap; B, если A={a, 1, 2 },B={a, b, 2}.
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p Выполните логическую операцию A \ B, если A={a, 1, 2 },B={a, b, 2}.
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p Выполните логическую операцию B \ A, если A={a, 1, 2 },B={a, b, 2}.
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p Выполните логическую операцию A &times; B, если A={a, 1, 2 },B={a, b, 2}.
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p Выполните логическую операцию B &times; A, если A={a, 1, 2 },B={a, b, 2}.
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p В группе 25 студентов, из них 17 знают физику, 24 знают дискретную математику, 8 знают и дискретную математику и физику. Покажите физический смысл объединения множеств
+                          td &#10008;
+                          td &#10004;
+                          td &#10004;
+                          td &#10004;
+                          td &#10004;
+                          td &#10004;
+                        tr
+                          td
+                            p В группе 25 студентов, из них 17 знают физику, 24 знают дискретную математику, 8 знают и дискретную математику и физику. Покажите физический смысл пересечения множеств. 
+                          td &#10008;
+                          td &#10004;
+                          td &#10004;
+                          td &#10004;
+                          td &#10004;
+                          td &#10004;
+                        tr
+                          td
+                            p В группе 25 студентов, из них 17 знают физику, 24 знают дискретную математику, 8 знают и дискретную математику и физику. Покажите физический смысл дополнения множеств.
+                          td &#10008;
+                          td &#10004;
+                          td &#10004;
+                          td &#10004;
+                          td &#10004;
+                          td &#10004;
+                        tr
+                          td
+                            p В группе 25 студентов, из них 17 знают физику, 24 знают дискретную математику, 8 знают и дискретную математику и физику. Покажите физический смысл разности множеств. 
+                          td &#10008;
+                          td &#10004;
+                          td &#10004;
+                          td &#10004;
+                          td &#10004;
+                          td &#10004;
+                        tr
+                          td
+                            p Определить мощность множества X={1, 2, 3, 4, 5}
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p Имеются 3 множества: A = {1, 2, 3}, B={a, d}, C={A, B, C, D}. Найти мощность множества прямого произведения A􏰋B􏰋C
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p Множество A= {1 - 130}.  Множество B – все числа, кратные 3, C – все числа, кратные 5. Найдите пересечение множеств. Определите мощности всех множеств
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p Множество A= {1 - 130}.  Множество B– все числа, кратные 3, C – все числа, кратные 5. Найдите объедине􏰀ние множеств. Определите мощности всех множеств
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p Множество A= {1 - 130}.  Множество B– все числа, кратные 3, C – все числа, кратные 5. Найдите дополнения множеств. Определите мощности всех множеств
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p Множество A= {1 - 130}.  Множество B– все числа, кратные 3, C – все числа, кратные 5. Найдите разности множеств. Определите мощности всех множеств
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10004;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel12v.tabs-panel
+                h4 Задача:
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel13v.tabs-panel
+                h4 Задача:
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel14v.tabs-panel
+                h4 Задача:
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+
+
+        / next ->
+      #panel2.tabs-panel
+        .row style=("margin-top: 1rem;")
+          .columns
+            h2 Булева алгебра
+            h4 Минимальные единицы:
+            ul
+              li Булева функция
+              li Таблицы истинности
+              li Основные тождества
+              li Основные логические операции (и, или, отрицание)
+              li Штрих Шейфера
+              li Стрелка Пирса
+              li Булевы функции двух аргументов
+              li Булевы функции трех аргументов
+              li Булевы функции n аргументов
+              li СДНФ
+              li СКНФ
+              li Преобразование булевых выражений
+              li Минимизация булевых функций
+              li Функционально полные наборы
+              li Базисные наборы
+              li Полином Жегалкина
+
+            br
+        .row.collapse
+          h4 Задачи
+          .medium-2.columns
+            ul#example-tabs.vertical.tabs data-tabs=""
+              li.tabs-title.is-active
+                a aria-selected="true" href="#panel21v" Таблица всех задач
+              li.tabs-title
+                a href="#panel22v" Задача 7.1
+              li.tabs-title
+                a href="#panel23v" Задача 7.2
+              li.tabs-title
+                a href="#panel24v" Задача 7.3
+          .medium-10.columns
+            .tabs-content data-tabs-content="example-tabs"
+              #panel21v.tabs-panel.is-active
                 .row
                   .columns
                     table.unstriped
@@ -135,7 +386,7 @@
                           td &#10004;
                           td &#10008;
             .tabs-content data-tabs-content="example-tabs"
-              #panel2v.tabs-panel
+              #panel22v.tabs-panel
                 h4 Задача:
                 .row
                   .columns
@@ -157,7 +408,7 @@
                           td &#10008;
                           td &#10004;
             .tabs-content data-tabs-content="example-tabs"
-              #panel3v.tabs-panel
+              #panel23v.tabs-panel
                 h4 Задача:
                 .row
                   .columns
@@ -179,7 +430,7 @@
                           td &#10008;
                           td &#10008;
             .tabs-content data-tabs-content="example-tabs"
-              #panel4v.tabs-panel
+              #panel24v.tabs-panel
                 h4 Задача:
                 .row
                   .columns
@@ -200,6 +451,546 @@
                           td &#10008;
                           td &#10004;
                           td &#10008;
+
+
+      / next ->
+
+      #panel3.tabs-panel
+        .row style=("margin-top: 1rem;")
+          .columns
+            h2 Элементы комбинаторики
+            h4 Минимальные единицы:
+            ul
+              li Размещение с повторениями
+              li Размещения без повторений
+              li Перестановки без повторений
+              li Перестановки с повторением
+              li Сочетания без повторений
+              li Сочетания с повторением
+            br
+        .row.collapse
+          h4 Задачи
+          .medium-2.columns
+            ul#example-tabs.vertical.tabs data-tabs=""
+              li.tabs-title.is-active
+                a aria-selected="true" href="#panel31v" Таблица всех задач
+              li.tabs-title
+                a href="#panel32v" Задача 7.1
+              li.tabs-title
+                a href="#panel33v" Задача 7.2
+              li.tabs-title
+                a href="#panel34v" Задача 7.3
+          .medium-10.columns
+            .tabs-content data-tabs-content="example-tabs"
+              #panel31v.tabs-panel.is-active
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="150" Задача
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td
+                            p
+                              | Выяснить применима ли изображенная машина Тьюринга, задаваемая программой П к слову 
+                              i
+                                | P = 1
+                                sup
+                                  small 3
+                                | 01
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p
+                              | По изображенной машине Тьюринга и начальной конфигурацией&nbsp;
+                              i
+                                | K = 1
+                                sup
+                                  small 2
+                              | 01q
+                              i
+                                sub 1
+                                | 1
+                                sup
+                                  small 2
+                              | найти заключительную конфигурацию (q
+                              sub 1
+                              | - заключительное состояние)
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                        tr
+                          td
+                            p
+                              | Построить машину Тьюринга в алфавите {0, 1}, переводящую конфигурацию K
+                              i
+                                sub 1
+                                | = q
+                                sub 1
+                                | 1
+                                sup
+                                  small n
+                                | в конфигурацию K
+                                sub 0
+                                | = q
+                                sub 0
+                                | 1
+                                sup n
+                                | 01
+                                sup n
+                                | , n &ge; 1
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel32v.tabs-panel
+                h4 Задача:
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel33v.tabs-panel
+                h4 Задача:
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel34v.tabs-panel
+                h4 Задача:
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+
+
+        / next panel ->
+
+      #panel4.tabs-panel
+        .row style=("margin-top: 1rem;")
+          .columns
+            h2 Неориентированные графы
+            h4 Минимальные единицы:
+            ul
+              li Понятие графа, вершины, ребра (вся терминология)
+              li Виды графов
+              li Способы задания графов
+              li Связные графы и компоненты связности
+              li Неравенство между количеством вершин, ребер и компонент связности
+              li Алгоритм Краскала
+              li Эйлеровы пути
+              li Критерий существования эйлерового пути
+              li Гамильтоновы пути
+              li Леса и деревья
+              li Теорема Кэли о количестве деревьев на n вершинах
+              li Коды Прюфера
+              li Плоские графы. Грани плоских графов
+              li Формула Эйлера для плоских графов
+            br
+        .row.collapse
+          h4 Задачи
+          .medium-2.columns
+            ul#example-tabs.vertical.tabs data-tabs=""
+              li.tabs-title.is-active
+                a aria-selected="true" href="#panel41v" Таблица всех задач
+              li.tabs-title
+                a href="#panel42v" Задача 7.1
+              li.tabs-title
+                a href="#panel43v" Задача 7.2
+              li.tabs-title
+                a href="#panel44v" Задача 7.3
+          .medium-10.columns
+            .tabs-content data-tabs-content="example-tabs"
+              #panel41v.tabs-panel.is-active
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="150" Задача
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td
+                            p
+                              | Выяснить применима ли изображенная машина Тьюринга, задаваемая программой П к слову 
+                              i
+                                | P = 1
+                                sup
+                                  small 3
+                                | 01
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p
+                              | По изображенной машине Тьюринга и начальной конфигурацией&nbsp;
+                              i
+                                | K = 1
+                                sup
+                                  small 2
+                              | 01q
+                              i
+                                sub 1
+                                | 1
+                                sup
+                                  small 2
+                              | найти заключительную конфигурацию (q
+                              sub 1
+                              | - заключительное состояние)
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                        tr
+                          td
+                            p
+                              | Построить машину Тьюринга в алфавите {0, 1}, переводящую конфигурацию K
+                              i
+                                sub 1
+                                | = q
+                                sub 1
+                                | 1
+                                sup
+                                  small n
+                                | в конфигурацию K
+                                sub 0
+                                | = q
+                                sub 0
+                                | 1
+                                sup n
+                                | 01
+                                sup n
+                                | , n &ge; 1
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel42v.tabs-panel
+                h4 Задача:
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel43v.tabs-panel
+                h4 Задача:
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel44v.tabs-panel
+                h4 Задача:
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+
+
+
+        / next panel -->
+      #panel5.tabs-panel
+        .row style=("margin-top: 1rem;")
+          .columns
+            h2 Ориентированные графы
+            h4 Минимальные единицы:
+            ul
+              li Ориентированные графы(терминология)
+              li Положительные и отрицательные степени вершин
+              li Теорема о суммах положительных и отрицательны степеней
+              li Изоморфизм ориентированных графов
+              li Алгоритм Дейкстры нахождения кратчайшего пути
+              li Сети и потоки
+              li Задача о нахождении максимального потока
+              li Разрезы в сетях
+              li Величина потока не превосходит величины разреза. Величина разреза
+              li Алгоритм Форда-Фалкерсона
+            br
+        .row.collapse
+          h4 Задачи
+          .medium-2.columns
+            ul#example-tabs.vertical.tabs data-tabs=""
+              li.tabs-title.is-active
+                a aria-selected="true" href="#panel51v" Таблица всех задач
+              li.tabs-title
+                a href="#panel52v" Задача 7.1
+              li.tabs-title
+                a href="#panel53v" Задача 7.2
+              li.tabs-title
+                a href="#panel54v" Задача 7.3
+          .medium-10.columns
+            .tabs-content data-tabs-content="example-tabs"
+              #panel51v.tabs-panel.is-active
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="150" Задача
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td
+                            p
+                              | Выяснить применима ли изображенная машина Тьюринга, задаваемая программой П к слову 
+                              i
+                                | P = 1
+                                sup
+                                  small 3
+                                | 01
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                        tr
+                          td
+                            p
+                              | По изображенной машине Тьюринга и начальной конфигурацией&nbsp;
+                              i
+                                | K = 1
+                                sup
+                                  small 2
+                              | 01q
+                              i
+                                sub 1
+                                | 1
+                                sup
+                                  small 2
+                              | найти заключительную конфигурацию (q
+                              sub 1
+                              | - заключительное состояние)
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                        tr
+                          td
+                            p
+                              | Построить машину Тьюринга в алфавите {0, 1}, переводящую конфигурацию K
+                              i
+                                sub 1
+                                | = q
+                                sub 1
+                                | 1
+                                sup
+                                  small n
+                                | в конфигурацию K
+                                sub 0
+                                | = q
+                                sub 0
+                                | 1
+                                sup n
+                                | 01
+                                sup n
+                                | , n &ge; 1
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel52v.tabs-panel
+                h4 Задача:
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel53v.tabs-panel
+                h4 Задача:
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+            .tabs-content data-tabs-content="example-tabs"
+              #panel54v.tabs-panel
+                h4 Задача:
+                .row
+                  .columns
+                    table.unstriped
+                      thead
+                        tr
+                          th width="50" Виджеты с числовой ответом
+                          th(word-break="break-word" width="50") Виджеты с ответом в виде математического выражения
+                          th width="50" Виджеты с ответом в виде рисунка
+                          th width="50" Виджеты с выбором ответа
+                          th width="50" Виджеты с развернутым ответом
+                          th width="50" Виджеты с ответом да/нет
+                      tbody
+                        tr
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10008;
+                          td &#10004;
+                          td &#10008;
+
+
+
       / next panel -->
       #panel6.tabs-panel
         .row style=("margin-top: 1rem;")
@@ -229,7 +1020,6 @@
               #panel61v.tabs-panel.is-active
                 .row
                   .columns
-                    p Table
                     table.unstriped
                       thead
                         tr
@@ -384,16 +1174,16 @@
           .medium-2.columns
             ul#example-tabs.vertical.tabs data-tabs=""
               li.tabs-title.is-active
-                a aria-selected="true" href="#panel1v" Таблица всех задач
+                a aria-selected="true" href="#panel71v" Таблица всех задач
               li.tabs-title
-                a href="#panel2v" Задача 7.1
+                a href="#panel72v" Задача 7.1
               li.tabs-title
-                a href="#panel3v" Задача 7.2
+                a href="#panel73v" Задача 7.2
               li.tabs-title
-                a href="#panel4v" Задача 7.3
+                a href="#panel74v" Задача 7.3
           .medium-10.columns
             .tabs-content data-tabs-content="example-tabs"
-              #panel1v.tabs-panel.is-active
+              #panel71v.tabs-panel.is-active
                 .row
                   .columns
                     table.unstriped
@@ -472,7 +1262,7 @@
                           td &#10004;
                           td &#10008;
             .tabs-content data-tabs-content="example-tabs"
-              #panel2v.tabs-panel
+              #panel72v.tabs-panel
                 h4 Задача:
                 p
                   | Выяснить применима ли изображенная машина Тьюринга, задаваемая программой П к слову 
@@ -501,7 +1291,7 @@
                           td &#10008;
                           td &#10004;
             .tabs-content data-tabs-content="example-tabs"
-              #panel3v.tabs-panel
+              #panel73v.tabs-panel
                 h4 Задача:
                 p
                   | По изображенной машине Тьюринга и начальной конфигурацией&nbsp;
@@ -538,7 +1328,7 @@
                           td &#10008;
                           td &#10008;
             .tabs-content data-tabs-content="example-tabs"
-              #panel4v.tabs-panel
+              #panel74v.tabs-panel
                 h4 Задача:
                 p
                   | Построить машину Тьюринга в алфавите {0, 1}, переводящую конфигурацию K
