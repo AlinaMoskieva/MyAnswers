@@ -1,6 +1,15 @@
 FactoryBot.define do
   factory :way do
-    association :current_question, factory: :question
-    association :next_question, factory: :question
+    current_test_question
+    next_test_question
+    right false
+
+    trait :right do
+      right true
+    end
+
+    trait :wrong do
+      right false
+    end
   end
 end
