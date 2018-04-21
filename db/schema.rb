@@ -10,36 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180420194916) do
+ActiveRecord::Schema.define(version: 20180415192957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "question_widgets", force: :cascade do |t|
-    t.bigint "question_id"
-    t.bigint "widget_id"
-    t.index ["question_id"], name: "index_question_widgets_on_question_id"
-    t.index ["widget_id"], name: "index_question_widgets_on_widget_id"
-  end
-
   create_table "questions", force: :cascade do |t|
     t.string "text", default: "", null: false
     t.string "theory"
-  end
-
-  create_table "test_questions", force: :cascade do |t|
-    t.bigint "test_id"
-    t.bigint "question_id"
-    t.bigint "widget_id"
-    t.index ["question_id"], name: "index_test_questions_on_question_id"
-    t.index ["test_id"], name: "index_test_questions_on_test_id"
-    t.index ["widget_id"], name: "index_test_questions_on_widget_id"
-  end
-
-  create_table "tests", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.integer "complexity", default: 0
-    t.json "target_audience", default: {}
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,15 +43,11 @@ ActiveRecord::Schema.define(version: 20180420194916) do
   end
 
   create_table "ways", force: :cascade do |t|
-    t.bigint "current_test_question_id"
-    t.bigint "next_test_question_id"
+    t.bigint "current_question_id"
+    t.bigint "next_question_id"
     t.boolean "right"
-    t.index ["current_test_question_id"], name: "index_ways_on_current_test_question_id"
-    t.index ["next_test_question_id"], name: "index_ways_on_next_test_question_id"
-  end
-
-  create_table "widgets", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.index ["current_question_id"], name: "index_ways_on_current_question_id"
+    t.index ["next_question_id"], name: "index_ways_on_next_question_id"
   end
 
 end
