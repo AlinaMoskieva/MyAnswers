@@ -1,0 +1,15 @@
+.row
+  .col-md-6
+    h3 = test.name
+
+    h4 Questions
+    - test.test_questions.each do |test_question|
+      = test_question.question_text
+      br
+
+    br
+    br
+    h4 Scenario
+
+script src="http://d3js.org/d3.v3.min.js"
+script src="graph.js"

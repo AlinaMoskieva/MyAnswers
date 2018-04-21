@@ -1,0 +1,6 @@
+.row
+  .col-md-6
+    h1 Tests
+
+    - tests.each do |test|
+      = link_to test.name, edit_test_path(test)
