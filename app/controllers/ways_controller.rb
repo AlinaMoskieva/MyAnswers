@@ -17,6 +17,6 @@ class WaysController < ApplicationController
   private
 
   def way_params
-    params.require(:way).permit(:current_test_question_id, :next_test_question_id)
+    params.require(:way).permit(:current_survey_question_id, :next_survey_question_id)
   end
 end

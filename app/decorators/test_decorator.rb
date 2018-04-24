@@ -1,6 +1,6 @@
-class TestDecorator < ApplicationDecorator
+class SurveyDecorator < ApplicationDecorator
   delegate :name, :complexity
 
-  decorates_association :test_questions
+  decorates_association :survey_questions
 
 end

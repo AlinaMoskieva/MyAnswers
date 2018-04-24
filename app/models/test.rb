@@ -1,5 +1,5 @@
-class Test < ApplicationRecord
-  has_many :test_questions
+class Survey < ApplicationRecord
+  has_many :survey_questions
 
   validates :name, presence: true
 end

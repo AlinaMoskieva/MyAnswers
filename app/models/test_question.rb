@@ -1,5 +1,5 @@
-class TestQuestion < ApplicationRecord
+class SurveyQuestion < ApplicationRecord
   belongs_to :question
   belongs_to :widget
-  belongs_to :test
+  belongs_to :survey
 end

@@ -1,13 +1,13 @@
 .row
   .medium-9.columns.medium-offset-1.columns
-    h3 = test.name
+    h3 = survey.name
 
     / p Сложность: Средняя
     = render "complexity_form"
 
     h4 Вопросы
-    - test.test_questions.each.with_index(1) do |test_question, index|
-      = "#{index}. #{test_question.question_text}"
+    - survey.survey_questions.each.with_index(1) do |survey_question, index|
+      = "#{index}. #{survey_question.question_text}"
       br
 
     br

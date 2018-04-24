@@ -1,6 +1,6 @@
-class TestsController < ApplicationController
-  expose_decorated :tests, -> { Test.all }
-  expose_decorated :test
+class SurveysController < ApplicationController
+  expose_decorated :surveys, -> { Survey.all }
+  expose_decorated :survey
 
   def index
   end
@@ -13,6 +13,6 @@ class TestsController < ApplicationController
 
   private
 
-  def test_params
+  def survey_params
   end
 end

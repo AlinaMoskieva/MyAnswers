@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    models:
+      survey:
+    attributes:
+      survey:
+        complexity: Complexity

@@ -1,7 +1,7 @@
 class CreateTestQuestions < ActiveRecord::Migration[5.1]
   def change
-    create_table :test_questions do |t|
-      t.references :test
+    create_table :survey_questions do |t|
+      t.references :survey
       t.references :question
       t.references :widget
     end

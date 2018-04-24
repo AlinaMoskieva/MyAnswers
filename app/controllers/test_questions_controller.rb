@@ -1,7 +1,7 @@
-class TestQuestionsController < ApplicationController
+class SurveyQuestionsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  expose_decorated :test_question
+  expose_decorated :survey_question
 
   respond_to :json
 
@@ -14,6 +14,6 @@ class TestQuestionsController < ApplicationController
 
   private
 
-  def test_question_params
+  def survey_question_params
   end
 end

@@ -1,11 +1,9 @@
 ru:
   activerecord:
     models:
-      test:
+      survey:
         one: Тест
         other: Тесты
     attributes:
-      test:
+      survey:
         complexity: Сложность
-      user:
-        full_name: Имя
