@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   root to: "tests#index"
 
   resources :tests, only: %i[index edit update destroy]
-  resources :question
+  resources :test_questions, only: %i[create destroy]
+  resources :questions
+  resources :ways
 end

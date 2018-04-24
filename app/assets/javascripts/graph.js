@@ -1,6 +1,6 @@
 // set up SVG for D3
 var width  = 960,
-    height = 500,
+    height = 600,
     colors = d3.scale.category10();
 
 var svg = d3.select('body')
@@ -176,6 +176,8 @@ function restart() {
         .classed('hidden', false)
         .attr('d', 'M' + mousedown_node.x + ',' + mousedown_node.y + 'L' + mousedown_node.x + ',' + mousedown_node.y);
 
+
+
       restart();
     })
     .on('mouseup', function(d) {
@@ -206,6 +208,8 @@ function restart() {
         direction = 'left';
       }
 
+
+
       var link;
       link = links.filter(function(l) {
         return (l.source === source && l.target === target);
@@ -218,6 +222,18 @@ function restart() {
         link[direction] = true;
         links.push(link);
       }
+
+      var xhr = new XMLHttpRequest();
+
+      var body =
+        'way[current_test_question_id]=' + source.id +
+        '&way[next_test_question_id]=' + target.id;
+
+      xhr.open("POST", '/ways.json', true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+      xhr.send(body);
+
 
       // select new link
       selected_link = link;
@@ -249,11 +265,21 @@ function mousedown() {
   if(d3.event.ctrlKey || mousedown_node || mousedown_link) return;
 
   // insert new node at point
+  var id = ++lastNodeId
   var point = d3.mouse(this),
-      node = {id: ++lastNodeId, reflexive: false};
+      node = {id: id, reflexive: false};
   node.x = point[0];
   node.y = point[1];
   nodes.push(node);
+
+  var xhr = new XMLHttpRequest();
+
+  var body = 'id=' + id;
+
+  xhr.open("POST", '/test_questions.json', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+  xhr.send(body);
 
   restart();
 }

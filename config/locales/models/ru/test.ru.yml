@@ -1,0 +1,11 @@
+ru:
+  activerecord:
+    models:
+      test:
+        one: Тест
+        other: Тесты
+    attributes:
+      test:
+        complexity: Сложность
+      user:
+        full_name: Имя

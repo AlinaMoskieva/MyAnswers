@@ -1,5 +1,5 @@
 class TestDecorator < ApplicationDecorator
-  delegate :name
+  delegate :name, :complexity
 
   decorates_association :test_questions
 
