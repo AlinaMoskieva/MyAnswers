@@ -4,10 +4,7 @@
 
     = render "form"
 
-    = render "survey_questions"
+    h4 Вопросы
+    = render partial: "survey_question", collection: survey.survey_questions
 
-    br
-    h4 Сценарий теста
-
-script src="http://d3js.org/d3.v3.min.js"
-script src="graph.js"
+    = render "scenario"
