@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :way do
-    current_test_question
-    next_test_question
+    current_survey_question
+    next_survey_question
     right false
 
     trait :right do
