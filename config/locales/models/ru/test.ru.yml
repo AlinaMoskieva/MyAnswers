@@ -1,9 +1,9 @@
 ru:
   activerecord:
     models:
-      survey:
+      test:
         one: Тест
         other: Тесты
     attributes:
-      survey:
+      test:
         complexity: Сложность

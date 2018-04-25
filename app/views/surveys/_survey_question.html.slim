@@ -1,8 +1,0 @@
-- index = survey_question_counter + 1
-
-div class=("survey-question-#{index}")
-  => "#{index}."
-  = survey_question.question_text
-
-  = simple_form_for :survey_question do |f|
-    = f.collection_select(:widget_id, Widget.select([:id, :name]), :id, :name)

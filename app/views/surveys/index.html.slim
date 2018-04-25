@@ -1,9 +1,0 @@
-.row
-  .col-md-6
-    h1 Tests
-
-    - surveys.each.with_index(1) do |survey, index|
-      = link_to "↓ ↑"
-      = " #{index}. "
-      = link_to survey.name, edit_survey_path(survey)
-      br

@@ -1,0 +1,9 @@
+.row
+  .col-md-6
+    h1 Tests
+
+    - tests.each.with_index(1) do |test, index|
+      = link_to "↓ ↑"
+      = " #{index}. "
+      = link_to test.name, edit_test_path(test)
+      br

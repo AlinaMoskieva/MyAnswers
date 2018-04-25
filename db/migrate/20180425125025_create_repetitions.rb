@@ -1,7 +1,7 @@
 class CreateRepetitions < ActiveRecord::Migration[5.1]
   def change
     create_table :repetitions do |t|
-      t.references :survey
+      t.references :test
       t.integer :number
       t.string :rule
       t.integer :period_number

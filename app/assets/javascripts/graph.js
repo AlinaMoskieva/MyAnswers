@@ -226,8 +226,8 @@ function restart() {
       var xhr = new XMLHttpRequest();
 
       var body =
-        'way[current_survey_question_id]=' + source.id +
-        '&way[next_survey_question_id]=' + target.id;
+        'way[current_test_question_id]=' + source.id +
+        '&way[next_test_question_id]=' + target.id;
 
       xhr.open("POST", '/ways.json', true);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -276,7 +276,7 @@ function mousedown() {
 
   var body = 'id=' + id;
 
-  xhr.open("POST", '/survey_questions.json', true);
+  xhr.open("POST", '/test_questions.json', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.send(body);

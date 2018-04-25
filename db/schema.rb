@@ -28,24 +28,24 @@ ActiveRecord::Schema.define(version: 20180425125025) do
   end
 
   create_table "repetitions", force: :cascade do |t|
-    t.bigint "survey_id"
+    t.bigint "test_id"
     t.integer "number"
     t.string "rule"
     t.integer "period_number"
     t.string "period_rule"
-    t.index ["survey_id"], name: "index_repetitions_on_survey_id"
+    t.index ["test_id"], name: "index_repetitions_on_test_id"
   end
 
-  create_table "survey_questions", force: :cascade do |t|
-    t.bigint "survey_id"
+  create_table "test_questions", force: :cascade do |t|
+    t.bigint "test_id"
     t.bigint "question_id"
     t.bigint "widget_id"
-    t.index ["question_id"], name: "index_survey_questions_on_question_id"
-    t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
-    t.index ["widget_id"], name: "index_survey_questions_on_widget_id"
+    t.index ["question_id"], name: "index_test_questions_on_question_id"
+    t.index ["test_id"], name: "index_test_questions_on_test_id"
+    t.index ["widget_id"], name: "index_test_questions_on_widget_id"
   end
 
-  create_table "surveys", force: :cascade do |t|
+  create_table "tests", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "complexity", default: ""
     t.json "target_audience", default: {}
@@ -74,11 +74,11 @@ ActiveRecord::Schema.define(version: 20180425125025) do
   end
 
   create_table "ways", force: :cascade do |t|
-    t.bigint "current_survey_question_id"
-    t.bigint "next_survey_question_id"
+    t.bigint "current_test_question_id"
+    t.bigint "next_test_question_id"
     t.boolean "right"
-    t.index ["current_survey_question_id"], name: "index_ways_on_current_survey_question_id"
-    t.index ["next_survey_question_id"], name: "index_ways_on_next_survey_question_id"
+    t.index ["current_test_question_id"], name: "index_ways_on_current_test_question_id"
+    t.index ["next_test_question_id"], name: "index_ways_on_next_test_question_id"
   end
 
   create_table "widgets", force: :cascade do |t|
