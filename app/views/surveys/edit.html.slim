@@ -4,32 +4,7 @@
 
     = render "form"
 
-    h4 Частота повторений
-    / = render "repetitions_frequency"
-    /
-    / .hidden-line
-    /
-    / = render "repetitions_frequency_2"
-    /
-    / br
-    / =< link_to "Добавить период"
-    / br
-    / br
-
-    = simple_form_for(survey) do |f|
-
-      = link_to_add_association "Добавить период",
-        f,
-        :repetitions
-
-    h4 Вопросы
-    - survey.survey_questions.each.with_index(1) do |survey_question, index|
-      = "#{index}. #{survey_question.question_text}"
-      .hidden-line-2
-      = simple_form_for :sss do |f|
-        = f.input :ppp, collection: ["Поле для ввода ответа", "Check Box", "Radio Button", "Калькулятор"], selected: "Поле для ввода ответа", label: "Виджет"
-      .hidden-line-2
-
+    = render "survey_questions"
 
     br
     h4 Сценарий теста

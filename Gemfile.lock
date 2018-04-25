@@ -84,6 +84,7 @@ GEM
       xpath (~> 2.0)
     choice (0.2.0)
     cliver (0.3.2)
+    cocoon (1.2.11)
     codeclimate-test-reporter (0.6.0)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.1)
@@ -443,6 +444,7 @@ DEPENDENCIES
   bundler-audit
   byebug
   capybara
+  cocoon
   codeclimate-test-reporter
   coffee-rails
   coffeelint

@@ -7,6 +7,7 @@ gem "rails", "5.1.2"
 
 # assets
 gem "autoprefixer-rails"
+gem "cocoon"
 gem "coffee-rails"
 gem "foundation-icons-sass-rails"
 gem "foundation-rails"

@@ -1,0 +1,7 @@
+h4 Вопросы
+- survey.survey_questions.each.with_index(1) do |survey_question, index|
+  = "#{index}. #{survey_question.question_text}"
+  .hidden-line-2
+  = simple_form_for :sss do |f|
+    = f.input :ppp, collection: ["Поле для ввода ответа", "Check Box", "Radio Button", "Калькулятор"], selected: "Поле для ввода ответа", label: "Виджет"
+  .hidden-line-2
