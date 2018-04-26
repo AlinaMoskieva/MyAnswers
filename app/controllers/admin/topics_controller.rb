@@ -9,6 +9,11 @@ class Admin::TopicsController < ApplicationController
     respond_with topic, location: admin_topics_path
   end
 
+  def update
+    topic.update(topic_params)
+    respond_with topic, location: [:admin, topic]
+  end
+
   private
 
   def topic_params
