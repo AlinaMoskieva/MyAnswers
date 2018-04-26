@@ -1,3 +1,3 @@
 class TopicDecorator < ApplicationDecorator
-  delegate :id, :name, :children, :parent, :has_parent?, :has_children?
+  delegate :id, :name, :children, :parent, :parent?, :children?
 end

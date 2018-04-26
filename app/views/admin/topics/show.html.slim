@@ -6,10 +6,10 @@
       = link_to "< Темы", admin_topics_path, class: "hollow button"
   .columns
 
-    - if topic.has_parent?
+    - if topic.parent?
       h4 = "Родительская запись"
       = render "table", topics: [topic.parent]
 
-    - if topic.has_children?
+    - if topic.children?
       h4 = "Дочерние записи"
       = render "table", topics: topic.children
