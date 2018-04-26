@@ -6,12 +6,17 @@ class Admin::TopicsController < ApplicationController
 
   def create
     topic.save
-    respond_with topic, location: admin_topics_path
+    respond_with topic, location: [:admin, topic]
   end
 
   def update
     topic.update(topic_params)
     respond_with topic, location: [:admin, topic]
+  end
+
+  def destroy
+    topic.destroy
+    respond_with topic, location: admin_topics_path
   end
 
   private
