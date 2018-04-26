@@ -4,4 +4,8 @@ Rails.application.routes.draw do
 
   resources :test
   resources :question
+
+  namespace :admin do
+    resources :topics, only: %i(create new index edit update destroy show)
+  end
 end
