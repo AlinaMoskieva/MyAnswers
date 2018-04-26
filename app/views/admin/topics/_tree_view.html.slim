@@ -1,0 +1,9 @@
+- Topic.walk_tree do |topic, level|
+  = "#{"–" * 3 * level} #{topic.name}"
+  '
+  = link_to "Просмотр", [:admin, topic]
+  '
+  = link_to "Редактирование", edit_admin_topic_path(topic)
+  '
+  = link_to "Удаление", [:admin, topic], method: :delete
+  br

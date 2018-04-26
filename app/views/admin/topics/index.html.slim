@@ -5,4 +5,15 @@
     .medium-3.columns.end
       = link_to "+ Создать тему", new_admin_topic_path, class: "hollow button"
   .columns
-    = render "table", topics: topics
+    ul#topic-tabs.tabs data-tabs=""
+      li.tabs-title.is-active
+        a aria-selected="true" href="#tree_panel"  Просмотр дерева
+      li.tabs-title
+        a data-tabs-target="table_panel" href="#table_panel"  Просмотр таблицы
+
+
+    .tabs-content data-tabs-content="topic-tabs"
+      #tree_panel.tabs-panel.is-active
+        = render "tree_view"
+      #table_panel.tabs-panel
+        = render "table", topics: topics
