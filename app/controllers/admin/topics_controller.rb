@@ -1,7 +1,7 @@
 class Admin::TopicsController < ApplicationController
   before_action :authenticate_user!
 
-  expose :topics, -> { Topic.all }
+  expose_decorated :topics, -> { Topic.all }
   expose_decorated :topic
 
   def create
