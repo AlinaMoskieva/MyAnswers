@@ -2,7 +2,7 @@ class Admin::TopicsController < ApplicationController
   before_action :authenticate_user!
 
   expose :topics, -> { Topic.all }
-  expose :topic
+  expose_decorated :topic
 
   def create
     topic.save

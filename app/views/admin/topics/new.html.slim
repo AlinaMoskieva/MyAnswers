@@ -2,7 +2,7 @@
   .columns
     h2 Создание новой темы
   .medium-6.columns.end
-    = simple_form_for([:admin, topic]) do |f|
+    = simple_form_for([:admin, topic.to_model]) do |f|
       = f.input :name, label: "Название темы", placeholder: "Введите название темы"
       = f.select :parent_id, topics.map { |r| [r.name, r.id] }, include_blank: true, label: "Выберите родительскую тему"
       = f.button :submit, class: "hollow button"
