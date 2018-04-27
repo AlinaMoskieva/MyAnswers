@@ -7,13 +7,14 @@ module Admin
     expose_decorated :units, -> { Unit.all }
 
     def create
+      unit.topic = topic
       unit.save
       respond_with topic, location: [:admin, unit]
     end
 
     def update
       unit.update(unit_params)
-      respond_with topic, location: [:admin, unit]
+      respond_with unit, location: [:admin, unit]
     end
 
     def destroy
@@ -24,7 +25,7 @@ module Admin
     private
 
     def unit_params
-      params.require(:unit).permit(:name).merge(topic_id: params[:topic_id])
+      params.require(:unit).permit(:name)
     end
   end
 end

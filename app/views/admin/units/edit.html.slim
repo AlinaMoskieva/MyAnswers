@@ -1,0 +1,7 @@
+.row
+  .columns
+    h2 Редактирование дидактической единицы
+  .medium-6.columns.end
+    = simple_form_for([:admin, unit.to_model]) do |f|
+      = f.input :name, label: "Название дидактической единицы", placeholder: "Введите название дидактической единицы"
+      = f.button :submit, class: "hollow button"
