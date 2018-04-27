@@ -1,0 +1,15 @@
+.row
+  .columns
+    .medium-10.columns
+      h2 = topic.name
+    .medium-2.columns.end
+      = link_to "< Темы", admin_topics_path, class: "hollow button"
+  .columns
+
+    - if topic.parent?
+      h4 = "Родительская запись"
+      = render "table", topics: [topic.parent]
+
+    - if topic.children?
+      h4 = "Дочерние записи"
+      = render "table", topics: topic.children
