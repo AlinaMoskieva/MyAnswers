@@ -4,10 +4,10 @@ module Admin
 
     expose_decorated :topic
     expose_decorated :unit
-    expose_decorated :units, -> { Unit.all }
 
     def create
       unit.topic = topic
+
       unit.save
       respond_with topic, location: [:admin, unit]
     end
