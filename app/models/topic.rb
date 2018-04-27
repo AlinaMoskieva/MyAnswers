@@ -16,4 +16,8 @@ class Topic < ApplicationRecord
   def children?
     children.present?
   end
+
+  def units?
+    units.any?
+  end
 end
