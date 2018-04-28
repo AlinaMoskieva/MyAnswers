@@ -4,6 +4,7 @@ module Admin
 
     expose_decorated :topics, -> { Topic.all }
     expose_decorated :topic
+    expose_decorated :units, -> { topic.units }
 
     def create
       topic.save

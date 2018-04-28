@@ -1,0 +1,18 @@
+table
+  thead
+    tr
+      th Название
+      th Просмотр
+      th Редактирование
+      th Удаление
+  tbody
+    - units.each do |unit|
+      tr
+        td
+          = unit.name
+        td
+          = link_to "Просмотр", [:admin, unit]
+        td
+          = link_to "Редактирование", edit_admin_unit_path(unit)
+        td
+          = link_to "Удаление", [:admin, unit], method: :delete
