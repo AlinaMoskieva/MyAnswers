@@ -2,7 +2,7 @@ ru:
   application:
     navigation_main:
       title: "Test App"
-      home: "Главная страница"
+      tests: "Тесты"
     navigation_user:
       edit_profile: "Редактировать профиль"
       sign_out: "Выход"
