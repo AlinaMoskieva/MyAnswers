@@ -4,7 +4,7 @@
 
     = render "form"
 
-    h4 Вопросы
+    h4 = t(".questions")
     = render partial: "test_question", collection: test.test_questions
 
     = render "scenario"

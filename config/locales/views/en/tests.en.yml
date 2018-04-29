@@ -1,0 +1,14 @@
+en:
+  tests:
+    index:
+      tests: Tests
+    edit:
+      questions: Questions
+    form:
+      repetitions_frequency: Repetitions Frequency
+      add_period: Add period
+    repetition_fields:
+      period: Period
+      repetitions_number: Repetitions Number
+    scenario:
+      test_scenario: Scenario of the test
