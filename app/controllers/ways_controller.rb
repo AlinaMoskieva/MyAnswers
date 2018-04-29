@@ -6,7 +6,6 @@ class WaysController < ApplicationController
   respond_to :json
 
   def create
-    # binding.pry
     way.right = true
     way.save
   end

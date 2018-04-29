@@ -6,7 +6,6 @@ class TestQuestionsController < ApplicationController
   respond_to :json
 
   def create
-    # binding.pry
   end
 
   def destroy
