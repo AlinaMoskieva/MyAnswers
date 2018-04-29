@@ -1,0 +1,14 @@
+ru:
+  tests:
+    index:
+      tests: Тесты
+    edit:
+      questions: Вопросы
+    form:
+      repetitions_frequency: Частота повторений
+      add_period: Добавить период
+    repetition_fields:
+      period: Период
+      repetitions_number: Количество повторений
+    scenario:
+      test_scenario: Сценарий теста

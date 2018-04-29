@@ -1,11 +1,11 @@
 .nested-fields
   .medium-6.columns
-    h5 Период
+    h5 = t(".period")
     = f.input :period_number, collection: 1..30, selected: 1, label: false
     = f.input :period_rule, collection: ["Неделя", "Месяц", "Год"], selected: "Неделя", label: false
 
   .medium-6.columns
-    h5 Количество повторний
+    h5 = t(".repetitions_number")
     = f.input :number, collection: 1..30, selected: 1, label: false
     = f.input :rule, collection: ["Неделя", "Месяц", "Год"], selected: "Неделя", label: false
 
