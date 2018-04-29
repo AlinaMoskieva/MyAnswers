@@ -1,4 +1,5 @@
 FactoryBot.create(:user, email: "user@example.com")
+FactoryBot.create(:user, :admin, email: "admin@example.com")
 
 test = FactoryBot.create(:test, name: "Элементы комбинаторики")
 FactoryBot.create(:test, name: "Основные операции над множествами")

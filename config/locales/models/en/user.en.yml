@@ -5,3 +5,8 @@ en:
     attributes:
       user:
         full_name: Full name
+  enumerize:
+    user:
+      role:
+        user: User
+        admin: Admin
