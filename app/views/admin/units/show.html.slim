@@ -1,0 +1,12 @@
+.row
+  .columns
+    .medium-7.columns
+      h2 = unit.name
+    .medium-5.columns.end
+      = link_to "<< Темы", admin_topics_path, class: "hollow button"
+      '
+      = link_to "< Родительская тема", [:admin, unit.topic], class: "hollow button"
+  .columns
+    = link_to "Редактирование", edit_admin_unit_path(unit), class: "hollow button"
+    '
+    = link_to "Удаление", [:admin, unit], method: :delete, class: "hollow alert button"

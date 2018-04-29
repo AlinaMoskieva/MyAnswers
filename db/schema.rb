@@ -51,6 +51,22 @@ ActiveRecord::Schema.define(version: 20180429120318) do
     t.json "target_audience", default: {}
   end
 
+  create_table "topics", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.bigint "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "index_topics_on_parent_id"
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.bigint "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_units_on_topic_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

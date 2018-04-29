@@ -6,4 +6,10 @@ Rails.application.routes.draw do
   resources :test_questions, only: %i[create destroy]
   resources :questions
   resources :ways
+
+  namespace :admin do
+    resources :topics, only: %i[create new index edit update destroy show] do
+      resources :units, shallow: true
+    end
+  end
 end
