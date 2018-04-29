@@ -5,4 +5,15 @@ class ApplicationPolicy
     @user = user
     @record = record.to_model
   end
+
+  def method_missing(method_name)
+    return manage? if method_name.to_s.end_with?("?") && respond_to?(:manage?)
+    super
+  end
+
+  protected
+
+  def admin?
+    user && user.admin?
+  end
 end
