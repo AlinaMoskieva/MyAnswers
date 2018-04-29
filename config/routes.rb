@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
-  root to: "pages#home"
+  root to: "tests#index"
 
-  resources :test
-  resources :question
+  resources :tests, only: %i[index edit update destroy]
+  resources :test_questions, only: %i[create destroy]
+  resources :questions
+  resources :ways
 
   namespace :admin do
     resources :topics, only: %i[create new index edit update destroy show] do

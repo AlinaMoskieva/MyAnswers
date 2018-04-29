@@ -1,0 +1,8 @@
+= simple_form_for(test.to_model) do |f|
+  = f.input :complexity, label: t("activerecord.attributes.test.complexity")
+
+  h4 Частота повторений
+  #repetitions
+    = simple_fields_for :repetitions do |repetition|
+      = render 'repetition_fields', f: repetition
+      = link_to_add_association "Добавить период", f, :repetitions

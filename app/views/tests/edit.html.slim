@@ -1,0 +1,10 @@
+.row
+  .medium-9.columns.medium-offset-1.columns
+    h3 = test.name
+
+    = render "form"
+
+    h4 Вопросы
+    = render partial: "test_question", collection: test.test_questions
+
+    = render "scenario"

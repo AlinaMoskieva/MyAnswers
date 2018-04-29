@@ -1,0 +1,8 @@
+- index = test_question_counter + 1
+
+div class=("test-question-#{index}")
+  => "#{index}."
+  = test_question.question_text
+
+  = simple_form_for :test_question do |f|
+    = f.collection_select(:widget_id, Widget.select([:id, :name]), :id, :name)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180427185318) do
+ActiveRecord::Schema.define(version: 20180429120318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20180427185318) do
     t.string "theory"
   end
 
+  create_table "repetitions", force: :cascade do |t|
+    t.bigint "test_id"
+    t.integer "number"
+    t.string "rule"
+    t.integer "period_number"
+    t.string "period_rule"
+    t.index ["test_id"], name: "index_repetitions_on_test_id"
+  end
+
   create_table "test_questions", force: :cascade do |t|
     t.bigint "test_id"
     t.bigint "question_id"
@@ -38,7 +47,7 @@ ActiveRecord::Schema.define(version: 20180427185318) do
 
   create_table "tests", force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.integer "complexity", default: 0
+    t.string "complexity", default: "", null: false
     t.json "target_audience", default: {}
   end
 
