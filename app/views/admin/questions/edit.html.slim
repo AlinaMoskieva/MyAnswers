@@ -1,0 +1,11 @@
+.row
+  .columns
+    h2 Редактирование вопроса
+  .medium-6.columns.end
+    = simple_form_for([:admin, question.to_model]) do |f|
+      = f.input :text, label: "Текст задачи", placeholder: "Введите текст задачи"
+      = f.input :theory, label: "Теория для задачи", placeholder: "Введите теорию для задачи"
+      = f.input :answers_amount, label: "Количество ответов на задачу", placeholder: "Введите количество ответов на задачу"
+      = f.input :right_answer, label: "Верный ответ на задачу", placeholder: "Введите верный ответ на задачу"
+
+      = f.button :submit, class: "hollow button"

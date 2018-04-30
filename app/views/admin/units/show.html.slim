@@ -10,3 +10,11 @@
     = link_to "Редактирование", edit_admin_unit_path(unit), class: "hollow button"
     '
     = link_to "Удаление", [:admin, unit], method: :delete, class: "hollow alert button"
+.row
+  .columns
+    .medium-9.columns
+      h2 = "Дидактические единицы"
+    .medium-3.columns.end
+      = link_to "+ Добавить задание", new_admin_unit_question_path(unit), class: "hollow button"
+  .columns
+    = render "admin/questions/table", questions: questions
