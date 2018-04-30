@@ -2,6 +2,7 @@ ru:
   tests:
     index:
       tests: Тесты
+      edit: редактировать
     edit:
       questions: Вопросы
     form:
