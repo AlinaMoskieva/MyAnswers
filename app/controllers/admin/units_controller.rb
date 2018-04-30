@@ -4,6 +4,7 @@ module Admin
 
     expose_decorated :topic
     expose_decorated :unit
+    expose_decorated :questions, -> { unit.questions }
 
     def create
       unit.topic = topic

@@ -1,0 +1,18 @@
+table
+  thead
+    tr
+      th Название
+      th Просмотр
+      th Редактирование
+      th Удаление
+  tbody
+    - questions.each do |question|
+      tr
+        td
+          = question.text
+        td
+          = link_to "Просмотр", [:admin, question]
+        td
+          = link_to "Редактирование", edit_admin_question_path(question)
+        td
+          = link_to "Удаление", [:admin, question], method: :delete
