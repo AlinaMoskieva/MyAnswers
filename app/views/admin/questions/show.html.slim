@@ -1,0 +1,26 @@
+.row
+  .large-offset-7.columns
+    = link_to "<< Темы", admin_topics_path, class: "hollow button"
+    '
+    = link_to "< Дидактическая единица", [:admin, question.unit], class: "hollow button"
+  .columns
+      h2 = question.text
+  .columns
+    = link_to "Редактирование", edit_admin_question_path(question), class: "hollow button"
+    '
+    = link_to "Удаление", [:admin, question], method: :delete, class: "hollow alert button"
+  .columns
+    table
+      thead
+        tr
+          th Верный ответ
+          th Количество ответов
+          th Теория
+      tbody
+          tr
+            td
+              = question.right_answer
+            td
+              = question.answers_amount
+            td
+              = question.theory
