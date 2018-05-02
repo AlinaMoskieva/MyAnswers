@@ -1,6 +1,6 @@
 module Admin
   class TopicsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authorize_resource
 
     expose_decorated :topics, -> { Topic.all }
     expose_decorated :topic
@@ -25,6 +25,10 @@ module Admin
 
     def topic_params
       params.require(:topic).permit(:name, :parent_id)
+    end
+
+    def authorize_resource
+      authorize topic
     end
   end
 end

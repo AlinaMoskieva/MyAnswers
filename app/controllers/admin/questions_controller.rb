@@ -1,6 +1,6 @@
 module Admin
   class QuestionsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authorize_resource
 
     expose_decorated :unit
     expose_decorated :question
@@ -27,6 +27,10 @@ module Admin
 
     def question_params
       params.require(:question).permit(:text, :theory, :answers_amount, :right_answer, :unit_id)
+    end
+
+    def authorize_resource
+      authorize question
     end
   end
 end

@@ -11,6 +11,10 @@ class ApplicationPolicy
     super
   end
 
+  def respond_to_missing?(method, *)
+    method =~ /(\w+)/ || super
+  end
+
   protected
 
   def admin?
