@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Update unit" do
   let(:admin) { create :user, :admin }
   let(:unit) { create :unit }
-  let(:unit_attributes)  { attributes_for(:unit) }
+  let(:unit_attributes) { attributes_for(:unit) }
 
   before do
     login_as admin

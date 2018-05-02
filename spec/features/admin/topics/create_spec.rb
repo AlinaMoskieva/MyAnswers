@@ -2,7 +2,7 @@ require "rails_helper"
 
 feature "Create topic" do
   let(:admin) { create :user, :admin }
-  let(:topic_attributes)  { attributes_for(:topic).slice(:name) }
+  let(:topic_attributes) { attributes_for(:topic).slice(:name) }
 
   before do
     login_as admin

@@ -3,7 +3,7 @@ require "rails_helper"
 feature "Update topic" do
   let(:admin) { create :user, :admin }
   let(:topic) { create :topic }
-  let(:topic_attributes)  { attributes_for(:topic).slice(:name) }
+  let(:topic_attributes) { attributes_for(:topic).slice(:name) }
 
   before do
     login_as admin
