@@ -14,6 +14,7 @@ gem "foundation-rails"
 gem "mini_racer"
 gem "premailer-rails"
 gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
+gem "skim"
 gem "uglifier", ">= 2.7.2"
 
 source "https://rails-assets.org" do
@@ -29,6 +30,7 @@ gem "simple_form"
 gem "slim"
 
 # all other gems
+gem "active_model_serializers", "0.10.0.rc4"
 gem "acts_as_tree"
 gem "decent_decoration"
 gem "decent_exposure"

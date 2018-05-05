@@ -7,9 +7,11 @@
 #= require jquery2
 #= require jquery-ujs
 #= require foundation
+#= require components/all
 #= require cocoon
+#= require skim
+#= require_tree ./templates
 #= require current_user
-#= require_tree ../templates
 #= require_tree .
 
 $(document).foundation()

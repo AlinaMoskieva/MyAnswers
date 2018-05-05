@@ -2,9 +2,9 @@
   .col-md-6
     h1 = t(".tests")
 
-    .tests
+    .js-tests
       - tests.each.with_index(1) do |test, index|
-        .js-test-sort-index data-id=test.id
+        .js-test data-id=test.id
           - if policy(test).edit?
             .test-sort-index
               - if test.increase_index_link_avaliable?

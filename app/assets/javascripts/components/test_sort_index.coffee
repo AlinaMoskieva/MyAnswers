@@ -1,13 +1,11 @@
 class TestSortIndex extends Components.Base
   refs:
+    testsContainer: ".js-tests"
     increaseLink: ".js-increase-sort-index-link"
     decreaseLink: ".js-decrease-sort-index-link"
 
   config:
     sortIndexUrl: "/tests/:test_id/sort_index.json"
-
-  initialize: ->
-    @testId = @$el.data("id")
 
   bindings: ->
     @$refs.increaseLink.click @_increaseIndex
@@ -15,10 +13,12 @@ class TestSortIndex extends Components.Base
 
   _increaseIndex: (event) =>
     event.preventDefault()
+    @testId = event.currentTarget.parentNode.parentNode.dataset["id"]
     @_updateTestSortIndex("+1")
 
   _decreaseIndex: (event) =>
     event.preventDefault()
+    @testId = event.currentTarget.parentNode.parentNode.dataset["id"]
     @_updateTestSortIndex("-1")
 
   _updateTestSortIndex: (step) =>
@@ -29,14 +29,11 @@ class TestSortIndex extends Components.Base
       data:
         test:
           step: step
-      statusCode:
-        200:
-          if step == "+1" then @_changeOrderOfThisTestAndNextOne else @_changeOrderOfThisTestAndPreviousOne
-
-  _changeOrderOfThisTestAndNextOne: =>
-
-  _changeOrderOfThisTestAndPreviousOne: =>
-
+      success: (response) =>
+        $(".js-tests").html(JST["templates/tests"](
+          tests: response
+        ))
+        new TestSortIndex($el) for $el in $(".js-tests")
 
 $ ->
-  new TestSortIndex($el) for $el in $(".js-test-sort-index")
+  new TestSortIndex($el) for $el in $(".js-tests")
