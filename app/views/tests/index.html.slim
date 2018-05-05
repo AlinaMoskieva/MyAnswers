@@ -2,8 +2,20 @@
   .col-md-6
     h1 = t(".tests")
 
-    - tests.each.with_index(1) do |test, index|
-      = link_to "↓ ↑"
-      = " #{index}. "
-      = link_to test.name, edit_test_path(test)
-      br
+    .js-tests
+      - tests.each.with_index(1) do |test, index|
+        .js-test data-id=test.id
+          - if policy(test).edit?
+            .test-sort-index
+              - if test.increase_index_link_avaliable?
+                => link_to "↓", "#", class: "js-increase-sort-index-link"
+              - else
+                ' &nbsp;&nbsp;
+              - if test.decrease_index_link_avaliable?
+                => link_to "↑", "#", class: "js-decrease-sort-index-link"
+              - else
+                ' &nbsp;&nbsp;
+          = " #{index}. "
+          => link_to test.name, test_path(test)
+          - if policy(test).edit?
+            => link_to "(#{t(".edit")})", edit_test_path(test)

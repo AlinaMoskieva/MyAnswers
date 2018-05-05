@@ -1,8 +1,6 @@
-class TestDecorator < ApplicationDecorator
-  delegate :id, :name, :complexity
-
-  decorates_association :test_questions
-  decorates_association :repetitions
+class TestSerializer < BaseSerializer
+  attributes :id, :name, :complexity, :target_audience, :sort_index,
+    :increase_index_link_avaliable?, :decrease_index_link_avaliable?
 
   def increase_index_link_avaliable?
     object.sort_index != max_sort_index

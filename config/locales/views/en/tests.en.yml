@@ -2,6 +2,7 @@ en:
   tests:
     index:
       tests: Tests
+      edit: edit
     edit:
       questions: Questions
     form:

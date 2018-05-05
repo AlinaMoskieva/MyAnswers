@@ -1,8 +1,11 @@
 class TestsController < ApplicationController
-  expose_decorated :tests, -> { Test.all }
+  expose_decorated :tests, -> { Test.order(sort_index: :asc) }
   expose_decorated :test
 
-  before_action :authorize_resource, except: :index
+  before_action :authorize_resource, except: %i(show index)
+
+  def show
+  end
 
   def index
   end
