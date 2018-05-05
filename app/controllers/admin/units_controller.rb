@@ -1,9 +1,10 @@
 module Admin
   class UnitsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authorize_resource
 
     expose_decorated :topic
     expose_decorated :unit
+    expose_decorated :questions, -> { unit.questions }
 
     def create
       unit.topic = topic
@@ -26,6 +27,10 @@ module Admin
 
     def unit_params
       params.require(:unit).permit(:name)
+    end
+
+    def authorize_resource
+      authorize unit
     end
   end
 end

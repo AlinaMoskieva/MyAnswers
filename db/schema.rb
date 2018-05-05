@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 20180429203411) do
   create_table "questions", force: :cascade do |t|
     t.string "text", default: "", null: false
     t.string "theory"
+    t.integer "answers_amount", default: 0, null: false
+    t.text "right_answer", default: "", null: false
+    t.bigint "unit_id", null: false
+    t.index ["unit_id"], name: "index_questions_on_unit_id"
   end
 
   create_table "repetitions", force: :cascade do |t|
