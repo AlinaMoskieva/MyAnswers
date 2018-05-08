@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180429203411) do
+ActiveRecord::Schema.define(version: 20180508083345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "question_widgets", force: :cascade do |t|
-    t.bigint "question_id"
-    t.bigint "widget_id"
-    t.index ["question_id"], name: "index_question_widgets_on_question_id"
-    t.index ["widget_id"], name: "index_question_widgets_on_widget_id"
-  end
 
   create_table "questions", force: :cascade do |t|
     t.string "text", default: "", null: false
@@ -70,6 +63,17 @@ ActiveRecord::Schema.define(version: 20180429203411) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["topic_id"], name: "index_units_on_topic_id"
+  end
+
+  create_table "user_answers", force: :cascade do |t|
+    t.string "answer", default: "", null: false
+    t.boolean "truthy", default: false, null: false
+    t.bigint "user_id"
+    t.bigint "test_question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_question_id"], name: "index_user_answers_on_test_question_id"
+    t.index ["user_id"], name: "index_user_answers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
