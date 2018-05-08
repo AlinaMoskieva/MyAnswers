@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :ways
 
   namespace :admin do
+    resources :widgets, only: :index
     resources :topics, only: %i[create new index edit update destroy show] do
       resources :units, shallow: true do
         resources :questions, shallow: true

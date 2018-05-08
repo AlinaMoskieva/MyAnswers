@@ -1,0 +1,9 @@
+.row
+  .columns
+    h2 Виджеты
+  .columns.large-12
+    - widgets.each do |widget|
+      h4 = "#{widget.name} виджет"
+      .row
+        .columns.large-5.large-offset-1
+          = render "widgets/partials/#{widget.name}_widget"

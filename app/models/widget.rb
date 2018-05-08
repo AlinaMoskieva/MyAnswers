@@ -1,5 +1,5 @@
 class Widget < ApplicationRecord
-  has_many :questions, through: :question_widgets
-
   validates :name, presence: true
+
+  has_many :questions, through: :question_widgets
 end

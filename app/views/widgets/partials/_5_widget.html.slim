@@ -1,0 +1,11 @@
+.row
+  #widget_with_variants
+    = simple_form_for([test_question, UserAnswer.new]) do |f|
+      .columns.medium-7.end
+        br
+        ol type = "1"
+          - question.answer_variants.each do |variant|
+            li.answer_variant = variant.content
+        = f.input :position_value, as: :hidden, input_html: { class: "position_value_answer", value: " " }
+        = f.input :answer, placeholder: "Введите номер верного варианта ответа", label: "Введите номер верного варианта ответа"
+        = f.button :submit, "Ответить"

@@ -1,0 +1,6 @@
+.row
+  = simple_form_for([test_question, UserAnswer.new]) do |f|
+    .columns.medium-7.end
+      br
+      = f.input :answer, placeholder: "Напишите да или нет", label: "Напишите да или нет"
+      = f.button :submit, "Ответить"
