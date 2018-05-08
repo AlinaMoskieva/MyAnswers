@@ -1,9 +1,9 @@
 .row
   = simple_form_for([test_question, UserAnswer.new]) do |f|
-    .columns.medium-7.end
+    .columns
       br
       #calculator_widget
-        = f.input :answer, input_html: { class: "calculator__input", value: "" }, label: "Введите ответ, используя предоставленную группу кнопок", placeholder: "Введите ответ"
+        = f.input :answer, input_html: { class: "calculator__input", value: "" }, label: "Введите ответ, используя предоставленную группу кнопок", placeholder: "Введите ответ", disabled: true
         .columns
           .button-group
             a#1.button 1
@@ -22,4 +22,4 @@
             a#del.button <
             a#del_all.button <<
       .columns.medium-7.end
-        = f.button :submit, "Ответить"
+        = f.button :submit, "Ответить", class: "hollow button"
