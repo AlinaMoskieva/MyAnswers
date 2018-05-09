@@ -1,4 +1,5 @@
 class QuestionWidget < ApplicationRecord
-  belongs_to :question
+  # Useless ?
+  belongs_to :test_question
   belongs_to :widget
 end
