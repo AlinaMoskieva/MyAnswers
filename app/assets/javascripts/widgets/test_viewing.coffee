@@ -9,6 +9,10 @@ class TestViewing
 
   bindings: (el)->
     @buttons.addClass("disabled")
+    @buttons.on "click", @preventRequest
+
+  preventRequest: (event)=>
+    event.preventDefault()
 
 $ ->
   if $("#test_viewing").length > 0

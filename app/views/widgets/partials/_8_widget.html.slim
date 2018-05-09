@@ -5,7 +5,7 @@
         br
           ol type = "1"
             hint = "Нажмите на галочку верного ответа"
-            - question.answer_variants.each_with_index do |variant, index|
+            - test_question.answer_variants.each_with_index do |variant, index|
               li.answer_variant
                 = variant.content
                 = image_tag("flag.png", size: "16x10", class: "right_flag_image right_#{index + 1}", id: "#{index + 1}")

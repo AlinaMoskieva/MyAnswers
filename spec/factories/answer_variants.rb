@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :answer_variant do
-    answer { Faker::Lorem.word }
+    content { Faker::Lorem.word }
     test_question
     truthy false
 

@@ -10,3 +10,12 @@ FactoryBot.create :widget, name: "9", description: "Необходимо кли�
 FactoryBot.create :widget, name: "10", description: "Необходимо написать да или нет"
 FactoryBot.create :widget, name: "11", description: "Необходимо выбрать из списка да или нет"
 FactoryBot.create :widget, name: "12", description: "Необходимо воспользоваться выборм между да или нет"
+
+question = FactoryBot.create :question
+test_question = FactoryBot.create :test_question, question: question
+
+FactoryBot.create :answer_variant, :right, test_question: test_question
+
+3.times do
+  FactoryBot.create :answer_variant, test_question: test_question
+end
