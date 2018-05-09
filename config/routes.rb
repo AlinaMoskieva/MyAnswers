@@ -10,10 +10,15 @@ Rails.application.routes.draw do
   resources :ways
 
   namespace :admin do
+    resources :widgets, only: :index
     resources :topics, only: %i[create new index edit update destroy show] do
       resources :units, shallow: true do
         resources :questions, shallow: true
       end
     end
+  end
+
+  resources :test_questions, only: %i[index show] do
+    resources :user_answers, only: :create
   end
 end

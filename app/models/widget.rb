@@ -1,5 +1,5 @@
 class Widget < ApplicationRecord
-  has_many :test_questions
+  validates :name, :description, presence: true
 
-  validates :name, presence: true
+  has_many :test_questions, dependent: :destroy
 end

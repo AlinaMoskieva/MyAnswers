@@ -8,4 +8,6 @@ class User < ApplicationRecord
   validates :full_name, presence: true
 
   enumerize :role, in: %w[user admin], predicates: true
+
+  has_many :user_answers, dependent: :destroy
 end

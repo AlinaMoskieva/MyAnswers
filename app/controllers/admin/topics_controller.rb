@@ -1,5 +1,5 @@
 module Admin
-  class TopicsController < ApplicationController
+  class TopicsController < BaseController
     before_action :authorize_resource
 
     expose_decorated :topics, -> { Topic.all }

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508075959) do
+ActiveRecord::Schema.define(version: 20180509172624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answer_variants", force: :cascade do |t|
+    t.string "content", null: false
+    t.boolean "truthy", default: false, null: false
+    t.bigint "test_question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_question_id"], name: "index_answer_variants_on_test_question_id"
+  end
 
   create_table "questions", force: :cascade do |t|
     t.string "text", default: "", null: false
@@ -65,6 +74,17 @@ ActiveRecord::Schema.define(version: 20180508075959) do
     t.index ["topic_id"], name: "index_units_on_topic_id"
   end
 
+  create_table "user_answers", force: :cascade do |t|
+    t.string "answer", default: "", null: false
+    t.boolean "truthy", default: false, null: false
+    t.bigint "user_id"
+    t.bigint "test_question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_question_id"], name: "index_user_answers_on_test_question_id"
+    t.index ["user_id"], name: "index_user_answers_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -98,6 +118,7 @@ ActiveRecord::Schema.define(version: 20180508075959) do
 
   create_table "widgets", force: :cascade do |t|
     t.string "name", default: "", null: false
+    t.string "description", default: "", null: false
   end
 
 end

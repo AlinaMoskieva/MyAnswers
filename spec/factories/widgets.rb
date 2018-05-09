@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :widget do
-    sequence(:name) { |n| "Widget ##{n}" }
+    name "1"
+    description { Faker::Lorem.word }
   end
 end

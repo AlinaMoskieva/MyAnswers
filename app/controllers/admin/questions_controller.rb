@@ -1,5 +1,5 @@
 module Admin
-  class QuestionsController < ApplicationController
+  class QuestionsController < BaseController
     before_action :authorize_resource
 
     expose_decorated :unit

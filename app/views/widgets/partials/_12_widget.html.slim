@@ -1,0 +1,8 @@
+.row
+  #radio_widget
+    = simple_form_for([test_question, UserAnswer.new]) do |f|
+      .columns.medium-7.end
+        br
+        = f.input :position_value, as: :hidden, input_html: { class: "position_value_answer", value: " " }
+        = f.input :answer, as: :radio_buttons, collection: [["1", "Да"], ["0", "Нет"]], label_method: :second, value_method: :first, label: "Выберите верный вариант ответа"
+        = f.button :submit, "Ответить"

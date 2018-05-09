@@ -1,0 +1,10 @@
+.row
+  #yes_no_widget
+    = simple_form_for([test_question, UserAnswer.new]) do |f|
+      .columns.medium-7.end
+        = f.input :answer, as: :hidden, input_html: { class: "position_value_answer", value: " " }
+        br
+
+        = f.button :submit, "Да", id: "yes_button"
+        '
+        = f.button :submit, "Нет", id: "no_button"

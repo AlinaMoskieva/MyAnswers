@@ -1,0 +1,12 @@
+.row
+  .columns.small-2.large-4.large-offset-4
+    h2 Виджеты
+  .columns.large-12
+    #test_viewing
+      - widgets.each do |widget|
+        h4 = "##{widget.name} виджет"
+        p = widget.description
+        .row
+          .columns.large-6
+            .callout
+                = render "widgets/partials/#{widget.name}_widget"

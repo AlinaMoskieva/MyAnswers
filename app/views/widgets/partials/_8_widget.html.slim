@@ -1,0 +1,14 @@
+.row
+  #flags
+    = simple_form_for([test_question, UserAnswer.new]) do |f|
+      .columns.medium-7.end
+        br
+          ol type = "1"
+            hint = "Нажмите на галочку верного ответа"
+            - test_question.answer_variants.each_with_index do |variant, index|
+              li.answer_variant
+                = variant.content
+                = image_tag("flag.png", size: "16x10", class: "right_flag_image right_#{index + 1}", id: "#{index + 1}")
+                = image_tag("cross.png", size: "16x10", class: "wrong_flag_image", id: "wrong_#{index + 1}")
+          = f.input :answer, as: :hidden, input_html: { class: "flag__input", value: " " }
+          = f.button :submit, "Ответить"
