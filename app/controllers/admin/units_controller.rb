@@ -1,5 +1,5 @@
 module Admin
-  class UnitsController < ApplicationController
+  class UnitsController < BaseController
     before_action :authorize_resource
 
     expose_decorated :topic

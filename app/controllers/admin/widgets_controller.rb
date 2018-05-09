@@ -1,5 +1,5 @@
 module Admin
-  class WidgetsController < ApplicationController
+  class WidgetsController < BaseController
     expose :widgets, -> { Widget.all }
     expose :test_question, -> { TestQuestion.last }
     # before_action :authorize_resource
