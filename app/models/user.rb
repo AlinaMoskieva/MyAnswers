@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   extend Enumerize
-  extend ActiveModel::Naming
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
     :trackable, :validatable
