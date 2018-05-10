@@ -4,6 +4,8 @@ class TestsController < ApplicationController
 
   before_action :authorize_resource, except: %i[show index]
 
+  respond_to :json, :html
+
   def show
   end
 
@@ -14,11 +16,19 @@ class TestsController < ApplicationController
   end
 
   def update
+    test.update(complexity: nil)
+
+    if test.errors.any?
+      render json: { error: test.errors.full_messages.join(", ") }, status: :unprocessable_entity
+    else
+      render json: test
+    end
   end
 
   private
 
   def test_params
+    params.require(:test).permit(:complexity)
   end
 
   def authorize_resource

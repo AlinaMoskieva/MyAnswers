@@ -7,3 +7,12 @@ ru:
     attributes:
       test:
         complexity: Сложность
+        name: Название теста
+    errors:
+      models:
+        test:
+          attributes:
+            complexity:
+              blank: "не может быть пустой"
+            name:
+              blank: "не может быть пустым"
