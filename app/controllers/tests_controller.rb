@@ -1,4 +1,5 @@
 class TestsController < ApplicationController
+  expose_decorated :test_questions, -> { test.test_questions.order(id: :asc) }
   expose_decorated :tests, -> { Test.order(sort_index: :asc) }
   expose_decorated :test
 
@@ -16,7 +17,7 @@ class TestsController < ApplicationController
   end
 
   def update
-    test.update(complexity: nil)
+    test.update(test_params)
 
     if test.errors.any?
       render json: { error: test.errors.full_messages.join(", ") }, status: :unprocessable_entity
@@ -28,7 +29,7 @@ class TestsController < ApplicationController
   private
 
   def test_params
-    params.require(:test).permit(:complexity)
+    params.require(:test).permit(:complexity, repetitions: %i[id number rule period_number period_rule])
   end
 
   def authorize_resource
