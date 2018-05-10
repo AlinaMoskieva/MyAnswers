@@ -22,14 +22,15 @@ class TestsController < ApplicationController
     if test.errors.any?
       render json: { error: test.errors.full_messages.join(", ") }, status: :unprocessable_entity
     else
-      render json: test
+      respond_with test, location: edit_test_path
     end
   end
 
   private
 
   def test_params
-    params.require(:test).permit(:complexity, repetitions: %i[id number rule period_number period_rule])
+    params.require(:test).permit(:complexity,
+      repetitions_attributes: %i[id number rule period_number period_rule _destroy])
   end
 
   def authorize_resource

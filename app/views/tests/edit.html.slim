@@ -3,11 +3,11 @@
     h3 = test.name
 
     .js-test-form data={ id: test.id }
-      = render "form"
-
       .test-settings-block
         h4 = t(".questions")
         = render partial: "test_question", collection: test_questions
+
+      = render "form"
 
       .test-settings-block
         = render "scenario"

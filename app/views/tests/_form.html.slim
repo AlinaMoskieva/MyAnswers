@@ -1,21 +1,14 @@
-= simple_form_for(test) do |f|
+= simple_form_for(test.to_model) do |f|
   .test-settings-block
+    h4 = t(".general_settings")
     = f.input :complexity, collection: Test::AVAILABLE_COMPLEXITY, label: t("activerecord.attributes.test.complexity")
 
   .test-settings-block
     h4 = t(".repetitions_frequency")
     #repetitions
-      = f.simple_fields_for :repetitions do |fp|
-        .nested-fields
-          .medium-6.columns
-            h5 = t(".period")
-            = fp.input :period_number, collection: 1..30, selected: 1, label: false
-            = fp.input :period_rule, collection: ["Неделя", "Месяц", "Год"], selected: "Неделя", label: false
-
-          .medium-6.columns
-            h5 = t(".repetitions_number")
-            = fp.input :number, collection: 1..30, selected: 1, label: false
-            = fp.input :rule, collection: ["Неделя", "Месяц", "Год"], selected: "Неделя", label: false
-          = link_to_remove_association "remove task", fp
-
+      = f.simple_fields_for :repetitions do |repetition|
+        = render 'repetition_fields', f: repetition
+      .links
         = link_to_add_association t(".add_period"), f, :repetitions
+
+  = f.button :submit, class: "hollow button"
