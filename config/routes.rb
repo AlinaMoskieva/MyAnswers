@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :tests, only: %i[index edit update destroy show] do
     resource :sort_index, only: %i[update], controller: :sort_indexes, module: :tests
   end
-  resources :test_questions, only: %i[create destroy update]
+  resources :test_questions, only: %i[create update destroy]
   # resources :questions
   resources :ways
 
