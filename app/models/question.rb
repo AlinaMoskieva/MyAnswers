@@ -3,4 +3,6 @@ class Question < ApplicationRecord
   validates :answers_amount, numericality: { greater_than: 0 }
 
   belongs_to :unit
+
+  has_many :question_types, dependent: :destroy
 end

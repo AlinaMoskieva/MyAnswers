@@ -4,4 +4,10 @@
   = f.input :answers_amount, label: "Количество ответов на задачу", placeholder: "Введите количество ответов на задачу"
   = f.input :right_answer, label: "Верный ответ на задачу", placeholder: "Введите верный ответ на задачу"
 
+  legend Выберите как минимум один тип вопроса
+  - QuestionType::TYPES.each do |type|
+    .form-inputs
+      = check_box_tag "question_types[]", type, false, { id: "question_type_#{type}" }
+      label for="question_type_#{type}" #{t(".question_type.types.#{type}")}
+
   = f.button :submit, class: "hollow button"
