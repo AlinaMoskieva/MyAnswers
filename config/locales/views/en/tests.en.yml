@@ -8,8 +8,10 @@ en:
     form:
       repetitions_frequency: Repetitions Frequency
       add_period: Add period
+      general_settings: General Settings
     repetition_fields:
       period: Period
       repetitions_number: Repetitions Number
+      remove_period: Remove period
     scenario:
       test_scenario: Scenario of the test

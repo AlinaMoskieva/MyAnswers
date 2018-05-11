@@ -2,9 +2,12 @@
   .medium-9.columns.medium-offset-1.columns
     h3 = test.name
 
-    = render "form"
+    .js-test-form data={ id: test.id }
+      .test-settings-block
+        h4 = t(".questions")
+        = render partial: "test_question", collection: test_questions
 
-    h4 = t(".questions")
-    = render partial: "test_question", collection: test.test_questions
+      = render "form"
 
-    = render "scenario"
+      .test-settings-block
+        = render "scenario"

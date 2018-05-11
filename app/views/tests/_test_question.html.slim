@@ -1,8 +1,9 @@
 - index = test_question_counter + 1
 
-div class=("test-question-#{index}")
+.js-test-question data={ id: test_question.id }
   => "#{index}."
   = test_question.question_text
 
   = simple_form_for :test_question do |f|
-    = f.collection_select(:widget_id, Widget.select([:id, :name]), :id, :name)
+    = f.input :widget_id, collection: Widget.select(:id, :description), label_method: :description,
+      input_html: { class: "test-question__widget" }, include_blank: false, selected: test_question.widget_id

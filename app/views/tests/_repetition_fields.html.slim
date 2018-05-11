@@ -1,12 +1,12 @@
 .nested-fields
   .medium-6.columns
     h5 = t(".period")
-    = f.input :period_number, collection: 1..30, selected: 1, label: false
-    = f.input :period_rule, collection: ["Неделя", "Месяц", "Год"], selected: "Неделя", label: false
+    = f.input :period_number, collection: 1..30, label: false, include_blank: false
+    = f.input :period_rule, collection: Repetition::AVALIABLE_RULES, label: false, include_blank: false
 
   .medium-6.columns
     h5 = t(".repetitions_number")
-    = f.input :number, collection: 1..30, selected: 1, label: false
-    = f.input :rule, collection: ["Неделя", "Месяц", "Год"], selected: "Неделя", label: false
+    = f.input :number, collection: 1..30, label: false, include_blank: false
+    = f.input :rule, collection: Repetition::AVALIABLE_RULES, label: false, include_blank: false
 
-  / = link_to_remove_association "remove task", f
+  = link_to_remove_association t(".remove_period"), f

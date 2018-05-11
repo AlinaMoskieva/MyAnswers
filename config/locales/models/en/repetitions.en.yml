@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    models:
+      repetition:
+    attributes:
+      repetition:
+        rule:
+          week: Week
+          month: Month
+          year: Year
