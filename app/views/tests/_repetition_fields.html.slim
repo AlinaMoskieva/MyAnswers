@@ -9,4 +9,4 @@
     = f.input :number, collection: 1..30, label: false, include_blank: false
     = f.input :rule, collection: Repetition::AVALIABLE_RULES, label: false, include_blank: false
 
-  = link_to_remove_association t(".remove_period"), f
+  = link_to_remove_association t(".remove_period"), f, class: "hollow button small destroy-period-button"

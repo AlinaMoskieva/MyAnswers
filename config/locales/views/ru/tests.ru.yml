@@ -9,6 +9,7 @@ ru:
       repetitions_frequency: Частота повторений
       add_period: Добавить период
       general_settings: Общие настройки
+      save: Сохранить Тест
     repetition_fields:
       period: Период
       repetitions_number: Количество повторений

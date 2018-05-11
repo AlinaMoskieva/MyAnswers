@@ -9,6 +9,6 @@
       = f.simple_fields_for :repetitions do |repetition|
         = render 'repetition_fields', f: repetition
       .links
-        = link_to_add_association t(".add_period"), f, :repetitions
+        = link_to_add_association t(".add_period"), f, :repetitions, class: "hollow button small"
 
-  = f.button :submit, class: "hollow button"
+  = f.button :submit, t(".save"), class: "hollow button"
