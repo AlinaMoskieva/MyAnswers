@@ -9,4 +9,7 @@
         .row
           .columns.large-6
             .callout
+              .tag-cloud
+                a.tag-cloud-individual-tag href="#"
+                  | #{t(".question_type.types.#{widget.question_type}")}
                 = render "widgets/partials/#{widget.name}_widget"
