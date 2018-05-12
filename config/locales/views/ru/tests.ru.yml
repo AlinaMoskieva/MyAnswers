@@ -1,18 +1,19 @@
 ru:
-  tests:
-    index:
-      tests: Тесты
-      edit: редактировать
-    edit:
-      questions: Вопросы
-    form:
-      repetitions_frequency: Частота повторений
-      add_period: Добавить период
-      general_settings: Общие настройки
-      save: Сохранить Тест
-    repetition_fields:
-      period: Период
-      repetitions_number: Количество повторений
-      remove_period: Удалить период
-    scenario:
-      test_scenario: Сценарий теста
+  admin:
+    tests:
+      index:
+        tests: Тесты
+        edit: редактировать
+      edit:
+        questions: Вопросы
+      form:
+        repetitions_frequency: Частота повторений
+        add_period: Добавить период
+        general_settings: Общие настройки
+        save: Сохранить Тест
+      repetition_fields:
+        period: Период
+        repetitions_number: Количество повторений
+        remove_period: Удалить период
+      scenario:
+        test_scenario: Сценарий теста
