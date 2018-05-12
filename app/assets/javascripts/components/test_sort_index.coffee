@@ -5,7 +5,7 @@ class TestSortIndex extends Components.Base
     decreaseLink: ".js-decrease-sort-index-link"
 
   config:
-    sortIndexUrl: "/tests/:test_id/sort_index.json"
+    sortIndexUrl: "/admin/tests/:test_id/sort_index.json"
 
   bindings: ->
     @$refs.increaseLink.click @_increaseIndex

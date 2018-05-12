@@ -7,7 +7,7 @@ module Admin
       expose :test
 
       def update
-        Tests::UpdateSortIndex.call(test: test, step: test_params[:step])
+        ::Tests::UpdateSortIndex.call(test: test, step: test_params[:step])
 
         render json: tests, each_serializer: ::TestSerializer
       end
