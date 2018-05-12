@@ -16,6 +16,7 @@ Rails.application.routes.draw do
         resources :questions, shallow: true
       end
     end
+    resources :programs
   end
 
   resources :test_questions, only: %i[index show] do
