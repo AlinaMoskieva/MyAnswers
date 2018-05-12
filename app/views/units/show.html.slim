@@ -13,9 +13,9 @@
         th width="20" #
         th width="200" Тест
         th width="50" Начать
-    / tbody
-    /   - tests.each_with_index do |unit, index|
-    /     tr
-    /       td = index + 1
-    /       td = test.name
-    /       td = link_to "Изучить", "#"
+    tbody
+      - tests.each_with_index do |test, index|
+        tr
+          td = index + 1
+          td = test.name
+          td = link_to "Пройти", "#"
