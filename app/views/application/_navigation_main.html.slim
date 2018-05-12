@@ -1,7 +1,5 @@
 .top-bar-left
   ul.menu
     li = link_to t(".title"), root_path
-    - if policy(Test.new).index?
-      = active_link_to t(".tests"), tests_path, active: :exclusive, wrap_tag: :li
     - if policy(Topic.new).manage?
       = active_link_to "Панель администратора", admin_topics_path, active: :exclusive, wrap_tag: :li
