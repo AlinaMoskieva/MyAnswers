@@ -2,7 +2,7 @@ module Admin
   class TopicsController < BaseController
     before_action :authorize_resource
 
-    expose_decorated :topics, -> { Topic.all }
+    expose :topics, -> { Topic.order(:created_at) }
     expose_decorated :topic
     expose_decorated :units, -> { topic.units }
 
