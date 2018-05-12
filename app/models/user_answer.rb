@@ -3,4 +3,5 @@ class UserAnswer < ApplicationRecord
 
   belongs_to :test_question
   belongs_to :user
+  belongs_to :test
 end

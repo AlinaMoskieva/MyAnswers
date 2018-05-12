@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :topics, only: %i[index show]
   resources :units, only: %i[show]
+  resources :tests, only: :show
 
   namespace :admin do
     resources :widgets, only: :index
