@@ -1,21 +1,23 @@
-class WaysController < ApplicationController
-  skip_before_action :verify_authenticity_token
+module Admin
+  class WaysController < BaseController
+    skip_before_action :verify_authenticity_token
 
-  expose :way
+    expose :way
 
-  respond_to :json
+    respond_to :json
 
-  def create
-    way.right = true
-    way.save
-  end
+    def create
+      way.right = true
+      way.save
+    end
 
-  def destroy
-  end
+    def destroy
+    end
 
-  private
+    private
 
-  def way_params
-    params.require(:way).permit(:current_test_question_id, :next_test_question_id)
+    def way_params
+      params.require(:way).permit(:current_test_question_id, :next_test_question_id)
+    end
   end
 end

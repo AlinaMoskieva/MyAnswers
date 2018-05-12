@@ -1,7 +1,7 @@
 class Test < ApplicationRecord
   extend Enumerize
 
-  AVAILABLE_COMPLEXITY = %w[Низкая Средняя Высокая]
+  AVAILABLE_COMPLEXITY = %w[Низкая Средняя Высокая].freeze
 
   validates :name, :complexity, presence: true
 
