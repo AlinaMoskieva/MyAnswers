@@ -1,5 +1,11 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
+    def create
+      super
+
+      UnitKnowledges::CreateForUser.call(user: resource) if resource.save
+    end
+
     protected
 
     def update_resource(resource, params)

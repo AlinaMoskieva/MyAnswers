@@ -7,10 +7,9 @@ module Admin
     expose_decorated :questions, -> { unit.questions }
 
     def create
-      unit.topic = topic
+      create_unit = Units::Create.call(unit: unit, topic: topic)
 
-      unit.save
-      respond_with topic, location: [:admin, unit]
+      respond_with create_unit.unit, location: [:admin, unit]
     end
 
     def update
