@@ -17,6 +17,7 @@ class Test < ApplicationRecord
   def first_question
     next_test_questions_ids = []
     test_questions.each { |tq| next_test_questions_ids << tq.next_ways.pluck(:next_test_question_id) }
-    (test_questions.ids - next_test_questions_ids.flatten).first
+    first_question_id = (test_questions.ids - next_test_questions_ids.flatten).first
+    TestQuestion.find(first_question_id)
   end
 end
