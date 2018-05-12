@@ -1,0 +1,21 @@
+.large-2.columns
+  ul.menu.vertical.callout.secondary#admin_menu_block
+    = active_link_to "Темы", topics_path, active: :exclusive, wrap_tag: :li
+.row
+  .columns
+    h2 = topic.name
+  .columns
+  table
+    thead
+      tr
+        th width="20" #
+        th width="200" Дидактическая единица
+        th width="150" Процент усвоенности
+        th width="50" Изучить
+    tbody
+      - units.each_with_index do |unit, index|
+        tr
+          td = index + 1
+          td = unit.name
+          td = unit_knowledges.find_by(unit: unit).value
+          td = link_to "Изучить", "#"

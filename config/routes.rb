@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
-  root to: "tests#index"
+  root to: "topics#index"
 
   resources :tests, only: %i[index edit update destroy show] do
     resource :sort_index, only: %i[update], controller: :sort_indexes, module: :tests
@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :test_questions, only: %i[create update destroy]
   # resources :questions
   resources :ways
+
+  resources :topics, only: %i[index show]
 
   namespace :admin do
     resources :widgets, only: :index
