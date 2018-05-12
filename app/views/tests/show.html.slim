@@ -1,0 +1,15 @@
+.row
+  .columns
+    h4 Результаты теста #{test.name}
+    p Сложность: #{test.complexity}
+    - user_answers.each do |user_answer|
+      div(class="callout #{user_answer.callout_color}")
+        h6 = user_answer.test_question_question_text
+        = "Верный ответ: #{user_answer.test_question_question_right_answer}"
+        br
+        = "Ваш ответ: #{user_answer.answer}"
+        br
+        - if user_answer.test_question_question_theory?
+          = "Объяснение:"
+          br
+          = user_answer.test_question_question_theory
