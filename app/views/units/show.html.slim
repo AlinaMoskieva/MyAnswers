@@ -1,0 +1,21 @@
+.large-2.columns
+  ul.menu.vertical.callout.secondary
+    = active_link_to unit.topic.name, unit.topic, active: :exclusive, wrap_tag: :li
+    = active_link_to "Все темы", topics_path, active: :exclusive, wrap_tag: :li
+
+.row
+  .columns
+    h2 = unit.name
+  .columns
+  table
+    thead
+      tr
+        th width="20" #
+        th width="200" Тест
+        th width="50" Начать
+    / tbody
+    /   - tests.each_with_index do |unit, index|
+    /     tr
+    /       td = index + 1
+    /       td = test.name
+    /       td = link_to "Изучить", "#"

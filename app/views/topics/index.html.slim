@@ -1,0 +1,11 @@
+.row
+  .columns
+    h2 Темы
+  .columns
+    - Topic.walk_tree do |topic, level|
+      = "#{"–" * 3 * level} "
+      - if topic.children.count > 0
+        = topic.name
+      - else
+        = link_to topic.name, topic
+      br

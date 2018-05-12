@@ -10,7 +10,6 @@ feature "Destroy unit" do
   end
 
   scenario "user has not ability to destroy unit" do
-    expect(page).not_to have_content(topic.name)
     expect(page).not_to have_content("Удаление")
   end
 end
