@@ -9,4 +9,5 @@ class User < ApplicationRecord
   enumerize :role, in: %w[user admin], predicates: true
 
   has_many :user_answers, dependent: :destroy
+  has_many :unit_knowledges, dependent: :destroy
 end

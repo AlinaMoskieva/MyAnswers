@@ -1,5 +1,5 @@
 .row
-  .col-md-6
+  .medium-9.medium-offset-1.columns
     h1 = t(".tests")
 
     .js-tests
@@ -16,6 +16,6 @@
               - else
                 ' &nbsp;&nbsp;
           = " #{index}. "
-          => link_to test.name, test_path(test)
+          => link_to test.name, admin_test_path(test)
           - if policy(test).edit?
-            => link_to "(#{t(".edit")})", edit_test_path(test)
+            => link_to "(#{t(".edit")})", edit_admin_test_path(test)

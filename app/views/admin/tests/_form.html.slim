@@ -1,4 +1,4 @@
-= simple_form_for(test.to_model) do |f|
+= simple_form_for([:admin, test.to_model]) do |f|
   .test-settings-block
     h4 = t(".general_settings")
     = f.input :complexity, collection: Test::AVAILABLE_COMPLEXITY, label: t("activerecord.attributes.test.complexity")
