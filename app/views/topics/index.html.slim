@@ -2,7 +2,7 @@
   .columns
     h2 Темы
   .columns
-    - Topic.walk_tree do |topic, level|
+    - topics.walk_tree do |topic, level|
       = "#{"–" * 3 * level} "
       - if topic.children.count > 0
         = topic.name
