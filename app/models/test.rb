@@ -13,4 +13,10 @@ class Test < ApplicationRecord
   accepts_nested_attributes_for :repetitions, allow_destroy: true
 
   enumerize :complexity, in: AVAILABLE_COMPLEXITY
+
+  def first_question
+    next_test_questions_ids = []
+    test_questions.each { |tq| next_test_questions_ids << tq.next_ways.pluck(:next_test_question_id) }
+    (test_questions.ids - next_test_questions_ids.flatten).first
+  end
 end
