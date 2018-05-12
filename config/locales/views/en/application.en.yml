@@ -2,9 +2,10 @@ en:
   application:
     navigation_main:
       title: "Test App"
-      tests: "Tests"
     navigation_user:
       edit_profile: "Edit profile"
       sign_out: "Sign out"
       sign_in: "Sign in"
       sign_up: "Sign up"
+    aside_admin_menu:
+      tests: Tests

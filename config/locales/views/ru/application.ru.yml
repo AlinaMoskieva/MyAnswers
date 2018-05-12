@@ -2,9 +2,10 @@ ru:
   application:
     navigation_main:
       title: "Test App"
-      tests: "Тесты"
     navigation_user:
       edit_profile: "Редактировать профиль"
       sign_out: "Выход"
       sign_in: "Вход"
       sign_up: "Регистрация"
+    aside_admin_menu:
+      tests: Тесты
