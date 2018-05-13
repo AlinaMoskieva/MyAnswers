@@ -144,6 +144,5 @@ ActiveRecord::Schema.define(version: 20180513133854) do
     t.string "question_type", default: "number", null: false
   end
 
-  add_foreign_key "test_questions", "question_types"
   add_foreign_key "user_answers", "tests"
 end
