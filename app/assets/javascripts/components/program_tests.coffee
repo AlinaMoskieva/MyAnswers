@@ -24,7 +24,7 @@ class ProgramTests extends Components.Base
       success: (response) =>
         $(".program-tests-list").html(JST["templates/tests_list"](tests: response))
         @_moveToBottom()
-        # @_initNewJSClass()
+        @_refreshListeners()
 
   _removeTest: (event) =>
     event.preventDefault()
@@ -39,7 +39,7 @@ class ProgramTests extends Components.Base
           test_id: @_testId(event)
       success: (response) =>
         $(".program-tests-list").html(JST["templates/tests_list"](tests: response))
-        # @_initNewJSClass()
+        @_refreshListeners()
 
   _testId: (event) =>
     event.currentTarget.closest(".test-item").dataset["id"]
@@ -53,8 +53,9 @@ class ProgramTests extends Components.Base
   _moveToBottom: =>
     $("html, body").animate({ scrollTop: $(document).height() - $(window).height() });
 
-  _initNewJSClass: =>
-    new ProgramTests($el) for $el in $(".program-tests")
+  _refreshListeners: =>
+    @_initRefs()
+    @$refs.removeTestLink.on "click", @_removeTest
 
 $ ->
   new ProgramTests($el) for $el in $(".program-tests")

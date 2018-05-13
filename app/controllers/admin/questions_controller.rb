@@ -4,7 +4,7 @@ module Admin
 
     expose_decorated :unit
     expose_decorated :question
-    expose_decorated :questions, from: :unit
+    expose_decorated :questions, -> { unit.questions }
 
     def create
       create_question = Questions::Create.call(question: question, unit: unit, params: params)
