@@ -7,6 +7,7 @@ class UnitKnowledgeDecorator < ApplicationDecorator
   end
 
   def value_in_percentage
-    "#{value * 100}%"
+    value_in_percent = value * 100
+    value_in_percent < 100 ? "#{value_in_percent.round(2)}%" : "100%"
   end
 end
