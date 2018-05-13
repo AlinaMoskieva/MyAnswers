@@ -5,6 +5,8 @@ feature "Update unit" do
   let(:unit) { create :unit }
 
   before do
+    create :unit_knowledge, user: user, unit: unit
+
     login_as user
     visit edit_admin_unit_path(unit)
   end

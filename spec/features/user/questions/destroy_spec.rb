@@ -6,6 +6,8 @@ feature "Destroy question" do
   let(:question) { create :question, unit: unit }
 
   before do
+    create :unit_knowledge, user: user, unit: unit
+
     login_as user
     visit admin_question_path(question)
   end

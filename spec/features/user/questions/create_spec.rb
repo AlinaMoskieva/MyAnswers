@@ -5,6 +5,8 @@ feature "Create question" do
   let(:unit) { create :unit }
 
   before do
+    create :unit_knowledge, user: user, unit: unit
+
     login_as user
     visit new_admin_unit_question_path(unit)
   end

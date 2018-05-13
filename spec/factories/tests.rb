@@ -4,5 +4,6 @@ FactoryBot.define do
     sequence(:sort_index) { |n| n * 1.0 }
     complexity { "Средняя" }
     target_audience { {} }
+    unit
   end
 end

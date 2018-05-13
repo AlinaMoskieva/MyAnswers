@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(version: 20180513150443) do
     t.string "complexity", default: "", null: false
     t.json "target_audience", default: {}
     t.float "sort_index", default: 1.0, null: false
+    t.bigint "unit_id", null: false
+    t.index ["unit_id"], name: "index_tests_on_unit_id"
   end
 
   create_table "topics", force: :cascade do |t|
@@ -109,6 +111,8 @@ ActiveRecord::Schema.define(version: 20180513150443) do
     t.bigint "test_question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "test_id"
+    t.index ["test_id"], name: "index_user_answers_on_test_id"
     t.index ["test_question_id"], name: "index_user_answers_on_test_question_id"
     t.index ["user_id"], name: "index_user_answers_on_user_id"
   end
@@ -150,6 +154,7 @@ ActiveRecord::Schema.define(version: 20180513150443) do
     t.string "question_type", default: "number", null: false
   end
 
+  add_foreign_key "user_answers", "tests"
   add_foreign_key "program_tests", "programs"
   add_foreign_key "program_tests", "tests"
 end
