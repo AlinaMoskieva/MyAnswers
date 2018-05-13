@@ -10,13 +10,21 @@ question_5 = FactoryBot.create :question, text: "1 + 5", answers_amount: 4, righ
 question_6 = FactoryBot.create :question, text: "1 + 6", answers_amount: 4, right_answer: "7", theory: "1 + 5 = 6", unit: unit
 question_7 = FactoryBot.create :question, text: "1 + 7", answers_amount: 4, right_answer: "8", theory: "1 + 6 = 7", unit: unit
 
-test_question_1 = FactoryBot.create :test_question, test: test, widget: Widget.find_by(name: "1"), question: question_1
-test_question_2 = FactoryBot.create :test_question, test: test, widget: Widget.find_by(name: "1"), question: question_2
-test_question_3 = FactoryBot.create :test_question, test: test, widget: Widget.find_by(name: "1"), question: question_3
-test_question_4 = FactoryBot.create :test_question, test: test, widget: Widget.find_by(name: "1"), question: question_4
-test_question_5 = FactoryBot.create :test_question, test: test, widget: Widget.find_by(name: "1"), question: question_5
-test_question_6 = FactoryBot.create :test_question, test: test, widget: Widget.find_by(name: "1"), question: question_6
-test_question_7 = FactoryBot.create :test_question, test: test, widget: Widget.find_by(name: "1"), question: question_7
+question_type_1 = FactoryBot.create :question_type, question: question_1, answer_type: "number"
+question_type_2 = FactoryBot.create :question_type, question: question_2, answer_type: "number"
+question_type_3 = FactoryBot.create :question_type, question: question_3, answer_type: "number"
+question_type_4 = FactoryBot.create :question_type, question: question_4, answer_type: "number"
+question_type_5 = FactoryBot.create :question_type, question: question_5, answer_type: "number"
+question_type_6 = FactoryBot.create :question_type, question: question_6, answer_type: "number"
+question_type_7 = FactoryBot.create :question_type, question: question_7, answer_type: "number"
+
+test_question_1 = FactoryBot.create :test_question, test: test, widget: Widget.find_by(name: "1"), question: question_1, question_type: question_type_1
+test_question_2 = FactoryBot.create :test_question, test: test, widget: Widget.find_by(name: "1"), question: question_2, question_type: question_type_2
+test_question_3 = FactoryBot.create :test_question, test: test, widget: Widget.find_by(name: "1"), question: question_3, question_type: question_type_3
+test_question_4 = FactoryBot.create :test_question, test: test, widget: Widget.find_by(name: "1"), question: question_4, question_type: question_type_4
+test_question_5 = FactoryBot.create :test_question, test: test, widget: Widget.find_by(name: "1"), question: question_5, question_type: question_type_5
+test_question_6 = FactoryBot.create :test_question, test: test, widget: Widget.find_by(name: "1"), question: question_6, question_type: question_type_6
+test_question_7 = FactoryBot.create :test_question, test: test, widget: Widget.find_by(name: "1"), question: question_7, question_type: question_type_7
 
 # First question: right => 2, wrong => 3
 FactoryBot.create :way, :right,  current_test_question: test_question_1, next_test_question: test_question_2
