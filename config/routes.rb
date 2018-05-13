@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
-  root to: "topics#index"
+  root to: "profiles#show"
 
   resources :topics, only: %i[index show]
   resources :units, only: %i[show]
   resources :tests, only: :show
+  resource :profile, only: :show
 
   namespace :admin do
     resources :widgets, only: :index
