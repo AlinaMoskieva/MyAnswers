@@ -6,10 +6,11 @@ module UnitKnowledges
     delegate :truthy, :user, :test, to: :user_answer, prefix: true
     delegate :test_question, to: :user_answer
     delegate :question_type, :question, :answer_variants, to: :test_question
+    delegate :answer_type, to: :question_type
     delegate :unit, to: "user_answer_test", prefix: true
 
     def call
-      return if !user_answer_truthy
+      return unless user_answer_truthy
       unit_knowledge.update(value: value)
     end
 
@@ -29,9 +30,9 @@ module UnitKnowledges
     end
 
     def probability
-      return 1.0 / question.answers_amount if question_type.answer_type.in?(["number", "picture", "math"])
-      return 1.0 / answer_variants.count if question_type.answer_type.eql? "choice"
-      return 0.5 if question_type.answer_type.eql? "yes_no"
+      return 1.0 / question.answers_amount if answer_type.in? %w[number picture math]
+      return 1.0 / answer_variants.count if answer_type.eql? "choice"
+      return 0.5 if answer_type.eql? "yes_no"
       1
     end
   end
