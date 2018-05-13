@@ -1,0 +1,22 @@
+.row
+  .medium-6.columns.medium-offset-1.columns
+    h3 = t(".program_edit")
+
+    = render "form"
+
+    .program-tests data-id=program.id
+      .tests-list
+        ol
+          - tests.each do |test|
+            li.test-item data-id=test.id
+              => test.name
+              = link_to "+", "#", class: "add-test"
+
+      h4 = t(".program_tests")
+
+      .program-tests-list
+        ol
+          - program_tests.each do |test|
+            li.test-item data-id=test.id
+              => test.name
+              = link_to "—", "#", class: "remove-test"

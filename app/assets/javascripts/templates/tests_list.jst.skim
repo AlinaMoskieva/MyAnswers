@@ -1,0 +1,6 @@
+- if @tests.length
+  ol
+    - $.each @tests, (i, test) =>
+      li
+        = test.name
+        a href="#" &nbsp;—

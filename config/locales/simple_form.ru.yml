@@ -23,6 +23,8 @@ ru:
           email: "Email"
           password: "Новый пароль"
           password_confirmation: "Подтверждение пароля"
+      program:
+        name: Имя
     hints:
       user:
         password: Оставьте поле пустым, если вы не хотите изменять пароль

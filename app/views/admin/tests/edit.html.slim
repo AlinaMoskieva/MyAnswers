@@ -5,7 +5,8 @@
     .js-test-form data={ id: test.id }
       .test-settings-block
         h4 = t(".questions")
-        = render partial: "test_question", collection: test_questions
+        ol
+          = render partial: "test_question", collection: test_questions
 
       = render "form"
 

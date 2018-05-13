@@ -1,2 +1,3 @@
-class ProgramDecorator < Draper::CollectionDecorator
+class ProgramDecorator < ApplicationDecorator
+  delegate :id, :name
 end
