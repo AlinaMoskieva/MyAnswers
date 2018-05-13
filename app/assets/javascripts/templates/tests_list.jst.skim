@@ -1,6 +1,6 @@
 - if @tests.length
   ol
     - $.each @tests, (i, test) =>
-      li
+      li.test-item data-id=test.id
         = test.name
-        a href="#" &nbsp;—
+        a.remove-test href="#" &nbsp;—

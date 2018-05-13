@@ -5,7 +5,7 @@ module Admin
     expose :program
     expose_decorated :programs, -> { Program.all.order(id: :asc) }
     expose_decorated :tests, -> { Test.all.order(id: :asc) }
-    expose_decorated :program_tests, -> { program.tests }, decorator: TestDecorator
+    expose_decorated :program_tests, :fetch_program_tests, decorator: TestDecorator
 
     def index
     end
@@ -20,6 +20,10 @@ module Admin
     end
 
     private
+
+    def fetch_program_tests
+      program.tests.order("program_tests.sort_index asc")
+    end
 
     def program_params
       params.require(:program).permit(:name)

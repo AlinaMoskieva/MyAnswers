@@ -7,6 +7,6 @@ ru:
         program_creation: "Создание программы"
       edit:
         program_edit: "Редактирование программы"
-      form:
         program_tests: "Тесты программы"
+      form:
         submit: "Сохранить программу"

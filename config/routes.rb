@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       end
     end
     resources :programs
-    resources :program_tests, only: %i[create]
+    resources :program_tests, only: %i[create destroy]
 
     resources :tests, only: %i[index edit update destroy show] do
       resource :sort_index, only: %i[update], controller: :sort_indexes, module: :tests

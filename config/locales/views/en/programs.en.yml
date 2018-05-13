@@ -7,6 +7,6 @@ en:
         program_creation: "Program creation"
       edit:
         program_edit: "Edit Program"
-      form:
         program_tests: "Program tests"
+      form:
         submit: "Save Program"
