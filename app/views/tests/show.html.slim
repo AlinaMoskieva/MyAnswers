@@ -2,6 +2,8 @@
   .columns
     h4 Результаты теста #{test.name}
     p Сложность: #{test.complexity}
+    p Дидактическая единица: #{unit.name}
+    p Освоено на #{unit_knowledge.value_in_percentage}
     - user_answers.each do |user_answer|
       div(class="callout #{user_answer.callout_color}")
         h6 = user_answer.test_question_question_text

@@ -6,4 +6,6 @@ class QuestionType < ApplicationRecord
   enumerize :answer_type, in: TYPES, predicates: true, default: "number"
 
   belongs_to :question
+
+  has_many :test_questions
 end
