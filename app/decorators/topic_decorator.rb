@@ -1,5 +1,6 @@
 class TopicDecorator < ApplicationDecorator
-  delegate :id, :name, :children, :parent
+  delegate :id, :name, :children, :parent, :units
+  decorates_association :units
 
   def parent?
     parent.present?

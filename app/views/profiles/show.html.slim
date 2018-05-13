@@ -1,0 +1,18 @@
+.row
+  .columns.small-5.small-centered
+    h2 Мои результаты
+  .columns.
+    - topics.each do |topic|
+      .row
+        .columns.medium-10
+          h4 #{topic.name}
+        .unit_knowledges
+          .columns.medium-10
+            table#unit_knowledges
+              tbody
+                - topic.units.each_with_index do |unit, index|
+                  - unit_knowledge = unit.unit_knowledges.find_by(user_id: current_user.id).decorate
+                  - if index % 10 == 0 && index > 0
+                    tr
+                  td style="background-color:#{unit_knowledge.td_color};"
+                    span.right data-tooltip="" title=(unit.name) #{unit_knowledge.value_in_percentage}
