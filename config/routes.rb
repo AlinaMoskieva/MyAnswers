@@ -14,6 +14,8 @@ Rails.application.routes.draw do
         resources :questions, shallow: true
       end
     end
+    resources :programs
+    resources :program_tests, only: %i[create destroy]
 
     resources :tests, only: %i[index edit update destroy show] do
       resource :sort_index, only: %i[update], controller: :sort_indexes, module: :tests

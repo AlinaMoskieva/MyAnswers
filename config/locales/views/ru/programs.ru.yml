@@ -1,0 +1,12 @@
+ru:
+  admin:
+    programs:
+      index:
+        add_program: "Добавить программу"
+      new:
+        program_creation: "Создание программы"
+      edit:
+        program_edit: "Редактирование программы"
+        program_tests: "Тесты программы"
+      form:
+        submit: "Сохранить программу"

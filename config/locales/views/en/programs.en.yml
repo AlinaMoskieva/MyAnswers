@@ -1,0 +1,12 @@
+en:
+  admin:
+    programs:
+      index:
+        add_program: "Add program"
+      new:
+        program_creation: "Program creation"
+      edit:
+        program_edit: "Edit Program"
+        program_tests: "Program tests"
+      form:
+        submit: "Save Program"
