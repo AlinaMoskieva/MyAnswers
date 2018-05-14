@@ -3,5 +3,6 @@ FactoryBot.define do
     test
     question
     widget
+    question_type
   end
 end

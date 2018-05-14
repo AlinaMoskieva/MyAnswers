@@ -66,7 +66,9 @@ ActiveRecord::Schema.define(version: 20180513150443) do
     t.bigint "test_id"
     t.bigint "question_id"
     t.bigint "widget_id"
+    t.bigint "question_type_id"
     t.index ["question_id"], name: "index_test_questions_on_question_id"
+    t.index ["question_type_id"], name: "index_test_questions_on_question_type_id"
     t.index ["test_id"], name: "index_test_questions_on_test_id"
     t.index ["widget_id"], name: "index_test_questions_on_widget_id"
   end
