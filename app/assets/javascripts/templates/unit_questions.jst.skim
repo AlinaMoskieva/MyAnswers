@@ -1,0 +1,7 @@
+- if @questions.length
+  ol
+    - $.each @questions, (i, question) =>
+      li.question-item data-id=question.id
+        = question.text
+        ' &nbsp;
+        a href = "#" +

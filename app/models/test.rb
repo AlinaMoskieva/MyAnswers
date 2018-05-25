@@ -10,6 +10,7 @@ class Test < ApplicationRecord
   has_many :test_questions, dependent: :destroy
   has_many :repetitions, dependent: :destroy
   has_many :user_answers, dependent: :destroy
+  has_many :program_tests, dependent: :destroy
 
   accepts_nested_attributes_for :repetitions, allow_destroy: true
 

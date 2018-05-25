@@ -2,20 +2,13 @@
   .medium-9.medium-offset-1.columns
     h1 = t(".tests")
 
+    h4
+      = link_to t(".add_test"), new_admin_test_path, class: "hollow button"
+
     .js-tests
-      - tests.each.with_index(1) do |test, index|
-        .js-test data-id=test.id
-          - if policy(test).edit?
-            .test-sort-index
-              - if test.increase_index_link_avaliable?
-                => link_to "↓", "#", class: "js-increase-sort-index-link"
-              - else
-                ' &nbsp;&nbsp;
-              - if test.decrease_index_link_avaliable?
-                => link_to "↑", "#", class: "js-decrease-sort-index-link"
-              - else
-                ' &nbsp;&nbsp;
-          = " #{index}. "
+      ol
+      - tests.each.with_index(1) do |test|
+        li
           => link_to test.name, admin_test_path(test)
           - if policy(test).edit?
-            => link_to "(#{t(".edit")})", edit_admin_test_path(test)
+            = link_to "(#{t(".edit")})", edit_admin_test_path(test)

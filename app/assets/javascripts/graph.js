@@ -392,7 +392,7 @@ function keyup() {
 svg.on('mousedown', mousedown)
   .on('mousemove', mousemove)
   .on('mouseup', mouseup);
-d3.select(window)
+d3.select(document.getElementsByClassName("test-scenario-graph")[0])
   .on('keydown', keydown)
   .on('keyup', keyup);
 restart();

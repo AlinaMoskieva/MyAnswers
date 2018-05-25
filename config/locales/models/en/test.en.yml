@@ -5,3 +5,4 @@ en:
     attributes:
       test:
         complexity: Complexity
+        unit: Unit

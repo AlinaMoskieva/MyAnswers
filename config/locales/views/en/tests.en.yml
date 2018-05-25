@@ -4,6 +4,9 @@ en:
       index:
         tests: Tests
         edit: edit
+        add_test: Add test
+      new:
+        create_test: Create test
       edit:
         questions: Questions
       form:

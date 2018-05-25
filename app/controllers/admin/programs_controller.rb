@@ -22,7 +22,10 @@ module Admin
     private
 
     def fetch_program_tests
-      program.tests.order("program_tests.sort_index asc")
+      program
+        .tests
+        .select("tests.id, tests.name, tests.complexity, program_tests.sort_index as sort_index, program_tests.program_id as program_id")
+        .order("program_tests.sort_index asc")
     end
 
     def program_params

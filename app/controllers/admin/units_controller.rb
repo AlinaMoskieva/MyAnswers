@@ -4,7 +4,14 @@ module Admin
 
     expose_decorated :topic
     expose_decorated :unit
-    expose_decorated :questions, -> { unit.questions }
+    expose_decorated :questions, from: :unit
+
+    def show
+      respond_to do |format|
+        format.html { respond_with unit }
+        format.json { render json: unit, serializer: ::UnitSerializer }
+      end
+    end
 
     def create
       create_unit = Units::Create.call(unit: unit, topic: topic)

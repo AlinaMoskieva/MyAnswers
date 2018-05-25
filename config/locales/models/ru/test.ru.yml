@@ -8,6 +8,7 @@ ru:
       test:
         complexity: Сложность
         name: Название теста
+        unit: Модуль
     errors:
       models:
         test:

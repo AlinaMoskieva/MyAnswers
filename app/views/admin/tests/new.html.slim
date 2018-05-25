@@ -1,8 +1,13 @@
 .row
   .medium-9.columns.medium-offset-1.columns
-    h3 = test.name
+    h3 = t(".create_test")
 
     .js-test-form data={ id: test.id }
+      .test-settings-block
+        h4 = t(".questions")
+        ol
+          = render partial: "test_question", collection: test_questions
+
       = render "form"
 
       .test-settings-block

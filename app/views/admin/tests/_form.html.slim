@@ -1,4 +1,18 @@
-= simple_form_for([:admin, test.to_model]) do |f|
+= simple_form_for(test.to_model, url: admin_tests_path(test.to_model)) do |f|
+  .test-settings-block
+    h4 = t(".general_settings")
+    = f.input :name, input_html: { value: "Полином Жегалкина"}
+
+  .test-settings-block
+    = f.input :unit_id, collection: Unit.select(:id, :name), label_method: :name, include_blank: false,
+      label: t("activerecord.attributes.test.unit") if test.to_model.new_record?
+
+  .test-settings-block
+    h4 = t(".questions")
+    ol
+      .unit-quiestions
+        = render partial: "test_question", collection: test_questions
+
   .test-settings-block
     h4 = t(".general_settings")
     = f.input :complexity, collection: Test::AVAILABLE_COMPLEXITY, label: t("activerecord.attributes.test.complexity")
