@@ -13,6 +13,12 @@ module Admin
       render json: tests, each_serializer: ::TestSerializer
     end
 
+    def update
+      ProgramTests::UpdateSortIndex.call(program_test: program_test, step: program_test_params[:step])
+
+      render json: tests, each_serializer: ::TestSerializer
+    end
+
     def destroy
       program.program_tests.find_by(test_id: program_test_params[:test_id]).destroy
 
@@ -26,7 +32,7 @@ module Admin
     end
 
     def program_test_params
-      params.require(:program_test).permit(:program_id, :test_id)
+      params.require(:program_test).permit(:program_id, :test_id, :step)
     end
 
     def authorize_resource

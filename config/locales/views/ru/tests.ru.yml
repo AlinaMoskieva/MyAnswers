@@ -4,6 +4,9 @@ ru:
       index:
         tests: Тесты
         edit: редактировать
+        add_test: Добавить тест
+      new:
+        create_test: Создание теста
       edit:
         questions: Вопросы
       form:

@@ -2,6 +2,8 @@ class ProgramTests extends Components.Base
   refs:
     addTestLink: ".add-test"
     removeTestLink: ".remove-test"
+    increaseSortIndexLink: ".increase-sort-index"
+    decreaseSortIndexLink: ".decrease-sort-index"
 
   initialize: ->
     @programId = @$el.data("id")
@@ -9,6 +11,8 @@ class ProgramTests extends Components.Base
   bindings: ->
     @$refs.addTestLink.on "click", @_addTest
     @$refs.removeTestLink.on "click", @_removeTest
+    @$refs.increaseSortIndexLink.on "click", @_increaseSortIndex
+    @$refs.decreaseSortIndexLink.on "click", @_decreaseSortIndex
 
   _addTest: (event) =>
     event.preventDefault()
@@ -30,7 +34,7 @@ class ProgramTests extends Components.Base
     event.preventDefault()
 
     $.ajax
-      url: @_destroyPprogramTestsPath()
+      url: @_destroyProgramTestsPath()
       type: "DELETE"
       dataType: "json"
       data:
@@ -41,13 +45,35 @@ class ProgramTests extends Components.Base
         $(".program-tests-list").html(JST["templates/tests_list"](tests: response))
         @_refreshListeners()
 
+  _increaseSortIndex: (event) =>
+    event.preventDefault()
+    @_updateSortIndex("+1")
+
+  _decreaseSortIndex: (event) =>
+    event.preventDefault()
+    @_updateSortIndex("-1")
+
+  _updateSortIndex: (step) =>
+    $.ajax
+      url: @config.sortIndexUrl.replace(":test_id", @testId)
+      type: "PATCH"
+      dataType: "json"
+      data:
+        test:
+          step: step
+      success: (response) =>
+        $(".js-tests").html(JST["templates/tests"](
+          tests: response
+        ))
+        new TestSortIndex($el) for $el in $(".js-tests")
+
   _testId: (event) =>
     event.currentTarget.closest(".test-item").dataset["id"]
 
   _createProgramTestsPath: =>
     "/admin/program_tests.json"
 
-  _destroyPprogramTestsPath: =>
+  _destroyProgramTestsPath: =>
     "/admin/program_tests/#{@testId}.json"
 
   _moveToBottom: =>
