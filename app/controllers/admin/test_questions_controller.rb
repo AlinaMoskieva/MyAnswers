@@ -3,8 +3,14 @@ module Admin
     skip_before_action :verify_authenticity_token
 
     expose_decorated :test_question
+    expose :questions, :fetch_questions
+    expose :test, id: -> { test_question_params[:test_id] }
 
     respond_to :json
+
+    def index
+      render json: questions, each_serializer: ::QuestionSerializer
+    end
 
     def create
       test_question.question_type = QuestionType.first
@@ -32,6 +38,10 @@ module Admin
     end
 
     private
+
+    def fetch_questions
+      test.test_questions.map { |tq| tq.question }.uniq
+    end
 
     def test_question_params
       params.require(:test_question).permit(:widget_id, :question_id, :test_id)
