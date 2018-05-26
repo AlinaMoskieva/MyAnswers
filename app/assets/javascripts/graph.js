@@ -31,18 +31,20 @@ function addToScenario(event) {
 
   xhr.send(body);
 
-  var labelName = JSON.parse(xhr.response).index;
+  var nodeId = JSON.parse(xhr.response).id,
+    nodeIndex = JSON.parse(xhr.response).index
 
-  showNode(labelName);
+  showNode(nodeId, nodeIndex);
 }
 
-function showNode(nodeLabel) {
+function showNode(id, index) {
   svg.classed('active', true);
 
   var node = {
     x: getRandomInt(0, 900),
     y: getRandomInt(0, 500),
-    id: nodeLabel,
+    id: id,
+    index: index,
     reflexive: false
   };
 
@@ -73,7 +75,7 @@ function getNodes() {
   var nodes_arr = [];
 
   nodes.forEach(function(node) {
-    nodes_arr.push({id: node.index, reflexive: false });
+    nodes_arr.push({id: node.id, index: node.index, reflexive: false });
   });
 
   return nodes_arr;
@@ -96,8 +98,8 @@ function getLinks() {
   var links_arr = [];
 
   links.forEach(function(link) {
-    source_node = nodes.find( function(node) { return node.id == link.current_test_question_index } );
-    target_node = nodes.find( function(node) { return node.id == link.next_test_question_index } );
+    source_node = nodes.find( function(node) { return node.index == link.current_test_question_index } );
+    target_node = nodes.find( function(node) { return node.index == link.next_test_question_index } );
     links_arr.push({
       source: source_node,
       target: target_node,
@@ -223,11 +225,11 @@ function restart() {
 
   // circle (node) group
   // NB: the function arg is crucial here! nodes are known by id, not by index!
-  circle = circle.data(nodes, function(d) { return d.id; });
+  circle = circle.data(nodes, function(d) { return d.index; });
 
   // update existing nodes (reflexive & selected visual states)
   circle.selectAll('circle')
-    .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.id)).brighter().toString() : colors(d.id); })
+    .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.index)).brighter().toString() : colors(d.index); })
     .classed('reflexive', function(d) { return d.reflexive; });
 
   // add new nodes
@@ -236,8 +238,8 @@ function restart() {
   g.append('svg:circle')
     .attr('class', 'node')
     .attr('r', 20)
-    .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.id)).brighter().toString() : colors(d.id); })
-    .style('stroke', function(d) { return d3.rgb(colors(d.id)).darker().toString(); })
+    .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.index)).brighter().toString() : colors(d.index); })
+    .style('stroke', function(d) { return d3.rgb(colors(d.index)).darker().toString(); })
     .classed('reflexive', function(d) { return d.reflexive; })
     .on('mouseover', function(d) {
       if(!mousedown_node || d === mousedown_node) return;
@@ -286,7 +288,7 @@ function restart() {
       // add link to graph (update if exists)
       // NB: links are strictly source < target; arrows separately specified by booleans
       var source, target, direction;
-      if(mousedown_node.id < mouseup_node.id) {
+      if(mousedown_node.index < mouseup_node.index) {
         source = mousedown_node;
         target = mouseup_node;
         direction = 'right';
@@ -311,13 +313,16 @@ function restart() {
         links.push(link);
       }
 
+      var testId = document.getElementsByClassName("js-test-form")[0].dataset["id"];
+
       var xhr = new XMLHttpRequest();
 
       var body =
-        'way[current_test_question_id]=' + source.id +
-        '&way[next_test_question_id]=' + target.id;
+        'way[test_id]=' + testId +
+        '&current_question_id=' + source.id +
+        '&next_question_id=' + target.id;
 
-      xhr.open("POST", '/ways.json', true);
+      xhr.open("POST", '/admin/ways.json', true);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
       xhr.send(body);
@@ -334,7 +339,7 @@ function restart() {
       .attr('x', 0)
       .attr('y', 4)
       .attr('class', 'id')
-      .text(function(d) { return d.id; });
+      .text(function(d) { return d.index; });
 
   // remove old nodes
   circle.exit().remove();

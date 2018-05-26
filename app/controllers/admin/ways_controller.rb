@@ -15,8 +15,15 @@ module Admin
     end
 
     def create
-      way.right = true
+      assign_attributes
+
       way.save
+
+      if way.errors.any?
+        render json: { error: way.errors.full_messages.join(", ") }, status: :unprocessable_entity
+      else
+        head :no_content
+      end
     end
 
     def destroy
@@ -24,8 +31,18 @@ module Admin
 
     private
 
+    def assign_attributes
+      test_id = way_params[:test_id]
+
+      way.assign_attributes(
+        current_test_question_id: TestQuestion.find_by(test_id: test_id, question_id: params[:current_question_id]).id,
+        next_test_question_id: TestQuestion.find_by(test_id: test_id, question_id: params[:next_question_id]).id,
+        right: true
+      )
+    end
+
     def way_params
-      params.require(:way).permit(:current_test_question_id, :next_test_question_id, :test_id)
+      params.require(:way).permit(:test_id)
     end
   end
 end
