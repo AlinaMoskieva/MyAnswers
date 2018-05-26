@@ -20,7 +20,7 @@ module Admin
       if test_question.errors.any?
         render json: { error: test_question.errors.full_messages.join(", ") }, status: :unprocessable_entity
       else
-        render json: { index: test_question.question.index }, status: :ok
+        render json: { id: test_question.question.id, index: test_question.question.index }, status: :ok
       end
     end
 
