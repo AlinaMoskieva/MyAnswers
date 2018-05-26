@@ -13,10 +13,53 @@ var svg = d3.select('body')
 //  - nodes are known by 'id', not by index in array.
 //  - reflexive edges are indicated on the node (as a bold black circle).
 //  - links are always source < target; edge directions are set by 'left' and 'right'.
+
+
+function addToScenario(event) {
+  event.preventDefault();
+
+  var testId = event.target.closest(".js-test-form").dataset["id"];
+  var questionId = event.target.closest(".js-unit-question").dataset["id"];
+
+  var xhr = new XMLHttpRequest();
+
+  var body =
+    'test_question[test_id]=' + testId +
+    '&test_question[question_id]=' + questionId;
+
+  xhr.open("POST", '/admin/test_questions.json', false);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+  xhr.send(body);
+
+  var labelName = JSON.parse(xhr.response).index;
+
+  showNode(labelName);
+}
+
+function showNode(nodeLabel) {
+  svg.classed('active', true);
+
+  var node = {
+    x: getRandomInt(0, 900),
+    y: getRandomInt(0, 500),
+    id: nodeLabel,
+    reflexive: false
+  };
+
+  nodes.push(node);
+
+  restart();
+}
+
+function getRandomInt(min = 0, max = 500) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 var nodes = [
-    {id: 0, reflexive: false},
-    {id: 1, reflexive: true },
-    {id: 2, reflexive: false}
+    {id: 1, reflexive: false},
+    {id: 2, reflexive: true },
+    {id: 3, reflexive: false}
   ],
   lastNodeId = 2,
   links = [
@@ -392,7 +435,18 @@ function keyup() {
 svg.on('mousedown', mousedown)
   .on('mousemove', mousemove)
   .on('mouseup', mouseup);
-d3.select(document.getElementsByClassName("test-scenario-graph")[0])
+d3.select(window)
   .on('keydown', keydown)
   .on('keyup', keyup);
+
+// Add unit question to scenario
+var unitQuestions = Array.from(document.getElementsByClassName("add-to-scenario"));
+d3.select(
+  unitQuestions.forEach(function(elem) {
+    elem.addEventListener("click", addToScenario);
+  })
+);
 restart();
+
+// d3.select(document.getElementsByClassName("test-scenario-graph")[0])
+// d3.select(document.getElementsByClassName("add-to-scenario").addEventListener("click", addToScenario))

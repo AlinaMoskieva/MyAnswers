@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180513150443) do
+ActiveRecord::Schema.define(version: 20180526171542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20180513150443) do
     t.integer "answers_amount", default: 0, null: false
     t.text "right_answer", default: "", null: false
     t.bigint "unit_id", null: false
+    t.integer "index"
     t.index ["unit_id"], name: "index_questions_on_unit_id"
   end
 
@@ -156,7 +157,7 @@ ActiveRecord::Schema.define(version: 20180513150443) do
     t.string "question_type", default: "number", null: false
   end
 
-  add_foreign_key "user_answers", "tests"
   add_foreign_key "program_tests", "programs"
   add_foreign_key "program_tests", "tests"
+  add_foreign_key "user_answers", "tests"
 end

@@ -1,5 +1,6 @@
 module Admin
   class TestsController < BaseController
+    expose_decorated :unit_questions, :fetch_unit_questions, decorator: QuestionDecorator
     expose_decorated :test_questions, -> { test.test_questions.order(id: :asc) }
     expose_decorated :tests, -> { Test.order(sort_index: :asc) }
     expose_decorated :test
@@ -34,6 +35,10 @@ module Admin
     end
 
     private
+
+    def fetch_unit_questions
+      test.unit.questions.order(id: :asc)
+    end
 
     def test_params
       params.require(:test).permit(:complexity,
