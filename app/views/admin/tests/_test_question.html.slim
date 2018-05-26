@@ -2,5 +2,5 @@
   li = test_question.question_text
 
   = simple_form_for([:admin, test_question]) do |f|
-    / = f.input :widget_id, collection: Widget.select(:id, :description), label_method: :description,
-    /   input_html: { class: "test-question__widget" }, include_blank: false, selected: test_question.widget_id
+    = f.input :widget_id, collection: Widget.select(:id, :description), label_method: :description,
+      input_html: { class: "test-question__widget" }, include_blank: false, selected: test_question.widget_id
