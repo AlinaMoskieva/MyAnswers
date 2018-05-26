@@ -1,5 +1,7 @@
 .js-test-question data={ id: test_question.id }
-  li = test_question.question_text
+  li
+    => test_question.question_text
+    = link_to "Добавить в сценарий", "#", class: "add-to-scenario"
 
   = simple_form_for([:admin, test_question]) do |f|
     = f.input :widget_id, collection: Widget.select(:id, :description), label_method: :description,

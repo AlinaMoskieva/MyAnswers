@@ -33,7 +33,7 @@ class TestForm extends Components.Base
     "/tests/#{@testId}.json"
 
   _testQuestionPath: =>
-    "/test_questions/#{@testQuestionId}.json"
+    "/admin/test_questions/#{@testQuestionId}.json"
 
 $ ->
   new TestForm($el) for $el in $(".js-test-form")
