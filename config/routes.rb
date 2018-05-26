@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
 
     resources :test_questions, only: %i[index create update destroy]
-    resources :ways
+    resources :ways, only: %i[index create destroy]
   end
 
   resources :test_questions, only: %i[index show] do

@@ -56,7 +56,7 @@ function getRandomInt(min = 0, max = 500) {
 }
 
 function getNodes() {
-  var testId = $(".js-test-form")[0].dataset["id"];
+  var testId = document.getElementsByClassName("js-test-form")[0].dataset["id"];
 
   var xhr = new XMLHttpRequest();
 
@@ -73,18 +73,44 @@ function getNodes() {
   var nodes_arr = [];
 
   nodes.forEach(function(node) {
-    nodes_arr.push({id: node.index,reflexive: false });
+    nodes_arr.push({id: node.index, reflexive: false });
   });
 
   return nodes_arr;
 }
 
+function getLinks() {
+  var testId = document.getElementsByClassName("js-test-form")[0].dataset["id"];
+
+  var xhr = new XMLHttpRequest();
+
+  var path = "/admin/ways.json?way[test_id]=" + testId;
+
+  xhr.open("get", path, false);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+  xhr.send();
+
+  var links = JSON.parse(xhr.response);
+
+  var links_arr = [];
+
+  links.forEach(function(link) {
+    source_node = nodes.find( function(node) { return node.id == link.current_test_question_index } );
+    target_node = nodes.find( function(node) { return node.id == link.next_test_question_index } );
+    links_arr.push({
+      source: source_node,
+      target: target_node,
+      left: false,
+      right: true
+    });
+  });
+
+  return links_arr;
+}
+
 var nodes = getNodes();
-var links = [
-    {source: nodes[0], target: nodes[1], left: false, right: true },
-    {source: nodes[1], target: nodes[2], left: false, right: true }
-  ],
-  lastNodeId = 2;
+var links = getLinks();
 
 // init D3 force layout
 var force = d3.layout.force()
@@ -317,35 +343,6 @@ function restart() {
   force.start();
 }
 
-function mousedown() {
-  // prevent I-bar on drag
-  //d3.event.preventDefault();
-
-  // because :active only works in WebKit?
-  svg.classed('active', true);
-
-  if(d3.event.ctrlKey || mousedown_node || mousedown_link) return;
-
-  // insert new node at point
-  var id = ++lastNodeId
-  var point = d3.mouse(this),
-      node = {id: id, reflexive: false};
-  node.x = point[0];
-  node.y = point[1];
-  nodes.push(node);
-
-  var xhr = new XMLHttpRequest();
-
-  var body = 'id=' + id;
-
-  xhr.open("POST", '/test_questions.json', true);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-  xhr.send(body);
-
-  restart();
-}
-
 function mousemove() {
   if(!mousedown_node) return;
 
@@ -451,8 +448,7 @@ function keyup() {
 }
 
 // app starts here
-svg.on('mousedown', mousedown)
-  .on('mousemove', mousemove)
+svg.on('mousemove', mousemove)
   .on('mouseup', mouseup);
 d3.select(window)
   .on('keydown', keydown)

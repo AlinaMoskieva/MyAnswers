@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526171542) do
+ActiveRecord::Schema.define(version: 20180526212935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,8 +147,10 @@ ActiveRecord::Schema.define(version: 20180526171542) do
     t.bigint "current_test_question_id"
     t.bigint "next_test_question_id"
     t.boolean "right"
+    t.bigint "test_id"
     t.index ["current_test_question_id"], name: "index_ways_on_current_test_question_id"
     t.index ["next_test_question_id"], name: "index_ways_on_next_test_question_id"
+    t.index ["test_id"], name: "index_ways_on_test_id"
   end
 
   create_table "widgets", force: :cascade do |t|
@@ -160,4 +162,5 @@ ActiveRecord::Schema.define(version: 20180526171542) do
   add_foreign_key "program_tests", "programs"
   add_foreign_key "program_tests", "tests"
   add_foreign_key "user_answers", "tests"
+  add_foreign_key "ways", "tests"
 end
