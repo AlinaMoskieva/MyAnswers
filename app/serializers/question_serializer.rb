@@ -1,3 +1,3 @@
 class QuestionSerializer < BaseSerializer
-  attributes :id, :text
+  attributes :id, :text, :index
 end

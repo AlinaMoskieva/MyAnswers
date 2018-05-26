@@ -14,7 +14,6 @@ var svg = d3.select('body')
 //  - reflexive edges are indicated on the node (as a bold black circle).
 //  - links are always source < target; edge directions are set by 'left' and 'right'.
 
-
 function addToScenario(event) {
   event.preventDefault();
 
@@ -56,16 +55,36 @@ function getRandomInt(min = 0, max = 500) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-var nodes = [
-    {id: 1, reflexive: false},
-    {id: 2, reflexive: true },
-    {id: 3, reflexive: false}
-  ],
-  lastNodeId = 2,
-  links = [
+function getNodes() {
+  var testId = $(".js-test-form")[0].dataset["id"];
+
+  var xhr = new XMLHttpRequest();
+
+  var path = "/admin/test_questions.json?test_question[test_id]=" + testId;
+
+  xhr.open("get", path, false);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+  xhr.send();
+
+  var nodes = JSON.parse(xhr.response);
+  var nodes_indexes = nodes.map(nodes => nodes.index);
+
+  var nodes_arr = [];
+
+  nodes.forEach(function(node) {
+    nodes_arr.push({id: node.index,reflexive: false });
+  });
+
+  return nodes_arr;
+}
+
+var nodes = getNodes();
+var links = [
     {source: nodes[0], target: nodes[1], left: false, right: true },
     {source: nodes[1], target: nodes[2], left: false, right: true }
-  ];
+  ],
+  lastNodeId = 2;
 
 // init D3 force layout
 var force = d3.layout.force()
