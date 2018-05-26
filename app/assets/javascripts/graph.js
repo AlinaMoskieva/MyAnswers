@@ -334,16 +334,13 @@ function mousedown() {
   node.y = point[1];
   nodes.push(node);
 
-  var xhr = new XMLHttpRequest();
-
-  var body = 'id=' + id;
-
-  xhr.open("POST", '/test_questions.json', true);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-  xhr.send(body);
-
   restart();
+}
+
+function toggleTooltip(e) {
+  var tooltip = document.getElementsByClassName("tooltiptext")[0];
+
+  tooltip.classList.toggle("visible");
 }
 
 function mousemove() {
@@ -453,6 +450,7 @@ function keyup() {
 // app starts here
 svg.on('mousedown', mousedown)
   .on('mousemove', mousemove)
+  .on('mousemove', toggleTooltip)
   .on('mouseup', mouseup);
 d3.select(window)
   .on('keydown', keydown)
