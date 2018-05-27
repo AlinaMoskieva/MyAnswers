@@ -1,4 +1,8 @@
 .js-unit-question data={ id: unit_question.id }
   li
     => unit_question.text
-    = link_to "Добавить в сценарий", "#", class: "add-to-scenario"
+    .add-to-scenario class=(unit_question.added?(test) ? "hidden" : "")
+      = link_to "Добавить в сценарий", "#"
+    .remove-from-scenario
+      - if unit_question.added?(test)
+        = link_to "Удалить из сценария", "#", data: { id: unit_question.added?(test).id }

@@ -14,8 +14,12 @@ var svg = d3.select('body')
 //  - reflexive edges are indicated on the node (as a bold black circle).
 //  - links are always source < target; edge directions are set by 'left' and 'right'.
 
+var nodes = getNodes();
+var links = getLinks();
+
 function addToScenario(event) {
   event.preventDefault();
+  event.target.parentElement.classList.add("hidden");
 
   var testId = event.target.closest(".js-test-form").dataset["id"];
   var questionId = event.target.closest(".js-unit-question").dataset["id"];
@@ -31,13 +35,46 @@ function addToScenario(event) {
 
   xhr.send(body);
 
-  var nodeId = JSON.parse(xhr.response).id,
-    nodeIndex = JSON.parse(xhr.response).index
+  var resp = JSON.parse(xhr.response);
 
-  showNode(nodeId, nodeIndex);
+  var nodeId = resp.id,
+    nodeIndex = resp.index,
+    testQuestionId = resp.test_question_id
+
+  console.log(nodeId, nodeIndex)
+
+  if (!nodeId || !nodeId) return;
+
+  var removeFromScenarioLink = event.target.parentElement.nextElementSibling;
+
+  removeFromScenarioLink.innerHTML =
+    "<a data-id='" + testQuestionId + "' href='#' class: 'remove-from-scenario'>Удалить из сценария</a>";
+  removeFromScenarioLink.addEventListener("click", removeFromScenario);
+
+  showNode(nodeId, nodeIndex, testQuestionId);
 }
 
-function showNode(id, index) {
+function removeFromScenario(event) {
+  event.preventDefault();
+
+  var addToScenarioLink = event.target.parentElement.previousElementSibling;
+  addToScenarioLink.classList.remove("hidden");
+
+  var testQuestionId = event.target.dataset["id"];
+
+  var xhr = new XMLHttpRequest();
+
+  xhr.open("DELETE", "/admin/test_questions/" + testQuestionId + ".json", false);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+  xhr.send();
+
+  removeNode(testQuestionId);
+
+  event.target.parentElement.innerHTML = "";
+}
+
+function showNode(id, index, testQuestionId) {
   svg.classed('active', true);
 
   var node = {
@@ -45,10 +82,20 @@ function showNode(id, index) {
     y: getRandomInt(0, 500),
     id: id,
     index: index,
+    testQuestionId: testQuestionId,
     reflexive: false
   };
 
   nodes.push(node);
+
+  restart();
+}
+
+function removeNode(testQuestionId) {
+  removedNode = nodes.find( function(node) { return node.testQuestionId == testQuestionId } );
+  nodes.splice(nodes.indexOf(removedNode), 1);
+
+  links = getLinks();
 
   restart();
 }
@@ -98,11 +145,11 @@ function getLinks() {
   var links_arr = [];
 
   links.forEach(function(link) {
-    source_node = nodes.find( function(node) { return node.index == link.current_test_question_index } );
-    target_node = nodes.find( function(node) { return node.index == link.next_test_question_index } );
+    sourceNode = nodes.find( function(node) { return node.index == link.current_test_question_index } );
+    targetNode = nodes.find( function(node) { return node.index == link.next_test_question_index } );
     links_arr.push({
-      source: source_node,
-      target: target_node,
+      source: sourceNode,
+      target: targetNode,
       left: false,
       right: true
     });
@@ -110,9 +157,6 @@ function getLinks() {
 
   return links_arr;
 }
-
-var nodes = getNodes();
-var links = getLinks();
 
 // init D3 force layout
 var force = d3.layout.force()
@@ -460,12 +504,21 @@ d3.select(window)
   .on('keyup', keyup);
 
 // Add unit question to scenario
-var unitQuestions = Array.from(document.getElementsByClassName("add-to-scenario"));
+var questions = Array.from(document.getElementsByClassName("add-to-scenario"));
 d3.select(
-  unitQuestions.forEach(function(elem) {
+  questions.forEach(function(elem) {
     elem.addEventListener("click", addToScenario);
   })
 );
+
+// Remove unit question from scenario
+var questions = Array.from(document.getElementsByClassName("remove-from-scenario"));
+d3.select(
+  questions.forEach(function(elem) {
+    elem.addEventListener("click", removeFromScenario);
+  })
+);
+
 restart();
 
 // d3.select(document.getElementsByClassName("test-scenario-graph")[0])
