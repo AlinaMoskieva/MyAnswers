@@ -41,8 +41,6 @@ function addToScenario(event) {
     nodeIndex = resp.index,
     testQuestionId = resp.test_question_id
 
-  console.log(nodeId, nodeIndex)
-
   if (!nodeId || !nodeId) return;
 
   var removeFromScenarioLink = event.target.parentElement.nextElementSibling;
@@ -273,7 +271,7 @@ function restart() {
 
   // update existing nodes (reflexive & selected visual states)
   circle.selectAll('circle')
-    .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.index)).brighter().toString() : colors(d.index); })
+    .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.id)).brighter().toString() : colors(d.id); })
     .classed('reflexive', function(d) { return d.reflexive; });
 
   // add new nodes
@@ -282,8 +280,8 @@ function restart() {
   g.append('svg:circle')
     .attr('class', 'node')
     .attr('r', 20)
-    .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.index)).brighter().toString() : colors(d.index); })
-    .style('stroke', function(d) { return d3.rgb(colors(d.index)).darker().toString(); })
+    .style('fill', function(d) { return (d === selected_node) ? d3.rgb(colors(d.id)).brighter().toString() : colors(d.id); })
+    .style('stroke', function(d) { return d3.rgb(colors(d.id)).darker().toString(); })
     .classed('reflexive', function(d) { return d.reflexive; })
     .on('mouseover', function(d) {
       if(!mousedown_node || d === mousedown_node) return;
