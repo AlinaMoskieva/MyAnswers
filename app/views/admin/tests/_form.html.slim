@@ -29,6 +29,6 @@
     h4 = t(".questions")
     ol
       .unit-quiestions
-        = render partial: "unit_question", collection: unit_questions
+        = render partial: "unit_question", collection: unit_questions, test: test
 
   = f.button :submit, t(".save"), class: "hollow button"
