@@ -16,7 +16,7 @@ module Admin
     def create
       program.save
 
-      respond_with program, location: edit_admin_program_path(program)
+      respond_with program, location: edit_admin_program_path(program), flash: false
     end
 
     def update

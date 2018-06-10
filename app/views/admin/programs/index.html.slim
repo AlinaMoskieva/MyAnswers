@@ -6,4 +6,6 @@
     h4 Программы
     ol
       - programs.each do |program|
-        li = program.name
+        li
+          => program.name
+          = link_to "(редактировть)", edit_admin_program_path(program)
