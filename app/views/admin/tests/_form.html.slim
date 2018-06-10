@@ -15,7 +15,6 @@
 
   - unless test.to_model.new_record?
     .test-settings-block
-      h4 = t(".general_settings")
       = f.input :complexity, collection: Test::AVAILABLE_COMPLEXITY, label: t("activerecord.attributes.test.complexity")
 
   - unless test.to_model.new_record?
@@ -36,4 +35,5 @@
         - else
           ' Пожалуйста, выберите модуль
 
-  = f.button :submit, t(".save"), class: "hollow button"
+  - if test.to_model.new_record?
+    = f.button :submit, t(".save"), class: "hollow button"

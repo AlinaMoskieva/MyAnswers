@@ -30,7 +30,7 @@ module Admin
       if test.errors.any?
         render json: { error: test.errors.full_messages.join(", ") }, status: :unprocessable_entity
       else
-        respond_with test, location: admin_edit_test_path
+        render json: test, serializer: ::TestSerializer
       end
     end
 

@@ -14,9 +14,6 @@ var svg = d3.select('body')
 //  - reflexive edges are indicated on the node (as a bold black circle).
 //  - links are always source < target; edge directions are set by 'left' and 'right'.
 
-var nodes = getNodes();
-var links = getLinks();
-
 function addToScenario(event) {
   event.preventDefault();
   event.target.parentElement.classList.add("hidden");
@@ -89,7 +86,7 @@ function showNode(id, index, testQuestionId) {
   restart();
 }
 
-function on(testQuestionId) {
+function removeNode(testQuestionId) {
   removedNode = nodes.find( function(node) { return node.testQuestionId == testQuestionId } );
   nodes.splice(nodes.indexOf(removedNode), 1);
 
@@ -156,6 +153,9 @@ function getLinks() {
   return links_arr;
 }
 
+var nodes = getNodes();
+var links = getLinks();
+
 // init D3 force layout
 var force = d3.layout.force()
     .nodes(nodes)
@@ -214,10 +214,6 @@ function resetMouseVars() {
 function tick() {
   // draw directed edges with proper padding from node centers
   path.attr('d', function(d) {
-    console.log("d: ", d)
-    console.log("d.target ", d.target)
-    console.log("d.target.x: ", d.target.x)
-    console.log("d.target.y: ", d.target.y)
     var deltaX = d.target.x - d.source.x,
         deltaY = d.target.y - d.source.y,
         dist = Math.sqrt(deltaX * deltaX + deltaY * deltaY),

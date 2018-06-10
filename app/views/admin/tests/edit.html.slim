@@ -3,6 +3,8 @@
     h3 = test.name
 
     .js-test-form data={ id: test.id }
+      .success-message.hidden
+        | Изменения успешно сохранены
       = render "form"
 
       .test-settings-block
