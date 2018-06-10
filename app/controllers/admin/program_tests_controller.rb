@@ -14,9 +14,11 @@ module Admin
     end
 
     def update
-      ProgramTests::UpdateSortIndex.call(program_test: program_test, step: program_test_params[:step])
+      # binding.pry
+      program_test_params[:step] ? update_sort_index : program_test.update_attributes(program_test_params)
 
-      render json: tests, each_serializer: ::TestSerializer
+
+      render json: tests, each_serializer: ::TestSerializer, program: program
     end
 
     def destroy
@@ -27,12 +29,16 @@ module Admin
 
     private
 
+    def update_sort_index
+      ProgramTests::UpdateSortIndex.call(program_test: program_test, step: program_test_params[:step])
+    end
+
     def fetch_tests
       program.tests.order("program_tests.sort_index asc")
     end
 
     def program_test_params
-      params.require(:program_test).permit(:program_id, :test_id, :step)
+      params.require(:program_test).permit(:program_id, :test_id, :step, :day_number)
     end
 
     def authorize_resource

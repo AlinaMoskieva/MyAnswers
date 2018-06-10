@@ -34,7 +34,8 @@ module Admin
     def fetch_program_tests
       program
         .tests
-        .select("tests.id, tests.name, tests.complexity, program_tests.sort_index as sort_index, program_tests.program_id as program_id")
+        .select("tests.id, tests.name, tests.complexity, program_tests.sort_index as sort_index,
+          program_tests.program_id as program_id")
         .order("program_tests.sort_index asc")
     end
 

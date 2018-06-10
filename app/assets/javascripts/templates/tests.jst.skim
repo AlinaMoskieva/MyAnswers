@@ -1,15 +1,15 @@
 - if @tests.length
-  - $.each @tests, (index, test) =>
-    .js-test data-id=test.id
-      .test-sort-index
+  ol
+    - $.each @tests, (i, test) =>
+      li.js-test-item.test-item data-id=test.id data-program-test-id=test.program_test_id
         - if test["increase_index_link_avaliable?"]
-          a.js-increase-sort-index-link href="#" ↓
+          a.increase-sort-index href="#" ↓
         - else
           ' &nbsp;&nbsp;
         - if test["decrease_index_link_avaliable?"]
-          a.js-decrease-sort-index-link href="#" &nbsp;↑
+          a.decrease-sort-index href="#" &nbsp;↑
         - else
           ' &nbsp;&nbsp;
-      | &nbsp;#{index + 1}.&nbsp;
-      a href="/tests/#{test.id}" #{test.name}
-      a href="/tests/#{test.id}/edit" &nbsp;(редактировать)
+        =< test.name
+        input(name="day_number" id="day_number" type="text" class="day-number")
+        a.remove-test href="#" Удалить

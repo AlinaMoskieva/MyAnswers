@@ -4,19 +4,33 @@ class TestDecorator < ApplicationDecorator
   decorates_association :test_questions
   decorates_association :repetitions
 
-  def increase_index_link_avaliable?
-    # object.sort_index != max_sort_index
+  def day_number(program)
+    pt = program_test(program)
 
-    false
+    pt.day_number
   end
 
-  def decrease_index_link_avaliable?
-    # object.sort_index != min_sort_index
+  def increase_index_link_avaliable?(program)
+    pt = program_test(program)
 
-    false
+    pt.sort_index != max_sort_index
+  end
+
+  def decrease_index_link_avaliable?(program)
+    pt = program_test(program)
+
+    pt.sort_index != min_sort_index
+  end
+
+  def program_test_id(program)
+    program_test(program).id
   end
 
   private
+
+  def program_test(program)
+    object.program_tests.find_by(program: program)
+  end
 
   def max_sort_index
     @max_sort_index ||= ProgramTests::FindMaxSortIndex.call(program: Program.find(object.program_id)).sort_index

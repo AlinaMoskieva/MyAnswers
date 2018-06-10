@@ -4,6 +4,7 @@ class ProgramTests extends Components.Base
     removeTestLink: ".remove-test"
     increaseSortIndexLink: ".increase-sort-index"
     decreaseSortIndexLink: ".decrease-sort-index"
+    dayNumberInput: ".day-number"
 
   initialize: ->
     @programId = @$el.data("id")
@@ -13,6 +14,7 @@ class ProgramTests extends Components.Base
     @$refs.removeTestLink.on "click", @_removeTest
     @$refs.increaseSortIndexLink.on "click", @_increaseSortIndex
     @$refs.decreaseSortIndexLink.on "click", @_decreaseSortIndex
+    @$refs.dayNumberInput.on "input", $.debounce(@_saveDayNumber, 300)
 
   _addTest: (event) =>
     event.preventDefault()
@@ -45,6 +47,16 @@ class ProgramTests extends Components.Base
         $(".program-tests-list").html(JST["templates/tests_list"](tests: response))
         @_refreshListeners()
 
+  _saveDayNumber: (event) =>
+    $.ajax
+      url: @_updateProgramTestPath(event)
+      type: "PATCH"
+      dataType: "json"
+      data:
+        program_test:
+          day_number: event.currentTarget.value
+          program_id: @programId
+
   _increaseSortIndex: (event) =>
     event.preventDefault()
     @_updateSortIndex("+1")
@@ -55,20 +67,27 @@ class ProgramTests extends Components.Base
 
   _updateSortIndex: (step) =>
     $.ajax
-      url: @config.sortIndexUrl.replace(":test_id", @testId)
+      url: @_updateProgramTestPath(event)
       type: "PATCH"
       dataType: "json"
       data:
-        test:
+        program_test:
           step: step
+          program_id: @programId
       success: (response) =>
-        $(".js-tests").html(JST["templates/tests"](
+        $(".program-tests-list").html(JST["templates/tests"](
           tests: response
         ))
-        new TestSortIndex($el) for $el in $(".js-tests")
+        new ProgramTests($el) for $el in $(".program-tests")
 
   _testId: (event) =>
     event.currentTarget.closest(".test-item").dataset["id"]
+
+  _programTestId: (event) =>
+    event.currentTarget.closest(".test-item").dataset["programTestId"]
+
+  _updateProgramTestPath: (event) =>
+    "/admin/program_tests/#{@_programTestId(event)}.json"
 
   _createProgramTestsPath: =>
     "/admin/program_tests.json"

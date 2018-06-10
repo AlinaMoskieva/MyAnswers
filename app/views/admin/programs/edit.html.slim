@@ -19,18 +19,15 @@
       .program-tests-list
         ol
           - program_tests.each do |test|
-            li.test-item data-id=test.id
-              => link_to "↓", "#", class: "increase-sort-index"
-              => link_to "↑", "#", class: "decrease-sort-index"
-              / - if test.increase_index_link_avaliable?
-              /   => link_to "↓", "#", class: "increase-sort-index"
-              / - else
-              /   ' &nbsp;&nbsp;
-              / - if test.decrease_index_link_avaliable?
-              /   => link_to "↑", "#", class: "decrease-sort-index"
-              / - else
-              /   ' &nbsp;&nbsp;
+            li.test-item data={ id: test.id, program_test_id: test.program_test_id(program) }
+              - if test.increase_index_link_avaliable?(program)
+                => link_to "↓", "#", class: "increase-sort-index"
+              - else
+                ' &nbsp;&nbsp;
+              - if test.decrease_index_link_avaliable?(program)
+                => link_to "↑", "#", class: "decrease-sort-index"
+              - else
+                ' &nbsp;&nbsp;
               => test.name
-              .day-number
-                => text_field_tag "day_number"
+              => text_field_tag "day_number", test.day_number(program), class: "day-number"
               = link_to "Удалить", "#", class: "remove-test"
