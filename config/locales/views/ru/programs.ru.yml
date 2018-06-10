@@ -9,4 +9,6 @@ ru:
         program_edit: "Редактирование программы"
         program_tests: "Тесты программы"
       form:
+        days_number: "Количество дней"
+        execution: "Выполнение программы"
         submit: "Сохранить программу"

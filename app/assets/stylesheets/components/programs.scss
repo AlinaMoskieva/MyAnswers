@@ -1,0 +1,19 @@
+$green-color: #093;
+
+.hidden {
+  display: none;
+}
+
+.success-message {
+  color: $green-color;
+}
+
+.day-number {
+  display: inline-block;
+  width: 60px;
+  margin: 0 10px;
+}
+
+.program-test-item {
+  margin: 5px 0;
+}

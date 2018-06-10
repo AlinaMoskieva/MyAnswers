@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526212935) do
+ActiveRecord::Schema.define(version: 20180610134256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,12 +28,15 @@ ActiveRecord::Schema.define(version: 20180526212935) do
     t.bigint "program_id"
     t.bigint "test_id"
     t.float "sort_index", default: 1.0, null: false
+    t.integer "day_number"
     t.index ["program_id"], name: "index_program_tests_on_program_id"
     t.index ["test_id"], name: "index_program_tests_on_test_id"
   end
 
   create_table "programs", force: :cascade do |t|
     t.string "name", null: false
+    t.integer "days_number"
+    t.string "execution"
   end
 
   create_table "question_types", force: :cascade do |t|

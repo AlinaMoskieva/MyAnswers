@@ -1,30 +1,33 @@
 .row
-  .medium-6.columns.medium-offset-1.columns
+  .medium-7.columns.medium-offset-1.columns
     h3 = t(".program_edit")
-
-    = render "form"
-
     .program-tests data-id=program.id
+      .program-form data-id=program.id
+        .success-message.hidden
+          | Изменения успешно сохранены
+        = render "form"
+
       .tests-list
         ol
           - tests.each do |test|
             li.test-item data-id=test.id
               => test.name
-              = link_to "+", "#", class: "add-test"
+              = link_to "Добавить", "#", class: "add-test"
 
       h4 = t(".program_tests")
 
       .program-tests-list
         ol
           - program_tests.each do |test|
-            li.test-item data-id=test.id
-              - if test.increase_index_link_avaliable?
+            li.program-test-item.test-item data={ id: test.id, program_test_id: test.program_test_id(program, test.sort_index) }
+              - if test.increase_index_link_avaliable?(program, test.sort_index)
                 => link_to "↓", "#", class: "increase-sort-index"
               - else
                 ' &nbsp;&nbsp;
-              - if test.decrease_index_link_avaliable?
+              - if test.decrease_index_link_avaliable?(program, test.sort_index)
                 => link_to "↑", "#", class: "decrease-sort-index"
               - else
                 ' &nbsp;&nbsp;
               => test.name
-              = link_to "—", "#", class: "remove-test"
+              => text_field_tag "day_number", test.day_number(program, test.sort_index), class: "day-number"
+              = link_to "Удалить", "#", class: "remove-test"

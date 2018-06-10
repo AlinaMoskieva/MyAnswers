@@ -37,7 +37,7 @@ module Admin
     private
 
     def fetch_unit_questions
-      test.unit.questions.order(id: :asc)
+      test.unit ? test.unit.questions.order(id: :asc) : []
     end
 
     def test_params

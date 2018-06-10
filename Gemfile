@@ -18,6 +18,7 @@ gem "skim"
 gem "uglifier", ">= 2.7.2"
 
 source "https://rails-assets.org" do
+  gem "rails-assets-jquery-debounce"
   gem "rails-assets-jquery-ujs"
   gem "rails-assets-jquery2"
 end

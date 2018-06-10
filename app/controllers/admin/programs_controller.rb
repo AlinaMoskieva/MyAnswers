@@ -16,7 +16,17 @@ module Admin
     def create
       program.save
 
-      respond_with program, location: edit_admin_program_path(program)
+      respond_with program, location: edit_admin_program_path(program), flash: false
+    end
+
+    def update
+      program.update_attributes(program_params)
+
+      if program.errors.any?
+        render json: { error: program.errors.full_messages.join(", ") }, status: :unprocessable_entity
+      else
+        render json: program
+      end
     end
 
     private
@@ -24,12 +34,13 @@ module Admin
     def fetch_program_tests
       program
         .tests
-        .select("tests.id, tests.name, tests.complexity, program_tests.sort_index as sort_index, program_tests.program_id as program_id")
+        .select("tests.id, tests.name, tests.complexity, program_tests.sort_index as sort_index,
+          program_tests.program_id as program_id")
         .order("program_tests.sort_index asc")
     end
 
     def program_params
-      params.require(:program).permit(:name)
+      params.require(:program).permit(:name, :days_number, :execution)
     end
 
     def authorize_resource
