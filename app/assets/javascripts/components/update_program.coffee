@@ -9,9 +9,9 @@ class UpdateProgram extends Components.Base
     @programId = @$el.data("id")
 
   bindings: ->
-    @$refs.nameInput.on "input", @_saveData
-    @$refs.daysNumberInput.on "input", @_saveData
-    @$refs.executionInput.on "input", @_saveData
+    @$refs.nameInput.on "input", $.debounce(@_saveData, 300)
+    @$refs.daysNumberInput.on "input", $.debounce(@_saveData, 300)
+    @$refs.executionInput.on "input", $.debounce(@_saveData, 300)
 
   _saveData: (event) =>
     $.ajax
