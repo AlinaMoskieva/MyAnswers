@@ -13,3 +13,5 @@
         =< test.name
         input(name="day_number" id="day_number" type="text" class="day-number" value=test.day_number)
         a.remove-test href="#" Удалить
+- else
+  | В программе нет тестов

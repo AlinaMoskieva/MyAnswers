@@ -83,7 +83,7 @@ class ProgramTests extends Components.Base
         $(".program-tests-list").html(JST["templates/tests"](
           tests: response
         ))
-        new ProgramTests($el) for $el in $(".program-tests")
+        @_refreshListeners()
         @_showSuccessMessage()
 
   _testId: (event) =>
