@@ -89,7 +89,7 @@ function showNode(id, index, testQuestionId) {
   restart();
 }
 
-function removeNode(testQuestionId) {
+function on(testQuestionId) {
   removedNode = nodes.find( function(node) { return node.testQuestionId == testQuestionId } );
   nodes.splice(nodes.indexOf(removedNode), 1);
 
@@ -214,6 +214,10 @@ function resetMouseVars() {
 function tick() {
   // draw directed edges with proper padding from node centers
   path.attr('d', function(d) {
+    console.log("d: ", d)
+    console.log("d.target ", d.target)
+    console.log("d.target.x: ", d.target.x)
+    console.log("d.target.y: ", d.target.y)
     var deltaX = d.target.x - d.source.x,
         deltaY = d.target.y - d.source.y,
         dist = Math.sqrt(deltaX * deltaX + deltaY * deltaY),

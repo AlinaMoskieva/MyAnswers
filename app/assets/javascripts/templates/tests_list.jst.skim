@@ -3,4 +3,4 @@
     - $.each @tests, (i, test) =>
       li.test-item data-id=test.id
         = test.name
-        a.remove-test href="#" &nbsp;—
+        a.remove-test href="#" &nbsp;Удалить

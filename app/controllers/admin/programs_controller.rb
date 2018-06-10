@@ -19,6 +19,16 @@ module Admin
       respond_with program, location: edit_admin_program_path(program)
     end
 
+    def update
+      program.update_attributes(program_params)
+
+      if program.errors.any?
+        render json: { error: program.errors.full_messages.join(", ") }, status: :unprocessable_entity
+      else
+        render json: program
+      end
+    end
+
     private
 
     def fetch_program_tests
@@ -29,7 +39,7 @@ module Admin
     end
 
     def program_params
-      params.require(:program).permit(:name)
+      params.require(:program).permit(:name, :days_number, :execution)
     end
 
     def authorize_resource

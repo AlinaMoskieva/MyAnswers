@@ -1,2 +1,9 @@
-h4
-  = link_to t(".add_program"), new_admin_program_path, class: "hollow button"
+.row
+  .medium-7.columns.medium-offset-1.columns
+    h4
+      = link_to t(".add_program"), new_admin_program_path, class: "hollow button"
+
+    h4 Программы
+    ol
+      - programs.each do |program|
+        li = program.name
