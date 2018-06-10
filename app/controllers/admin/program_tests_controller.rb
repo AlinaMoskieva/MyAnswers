@@ -10,11 +10,10 @@ module Admin
       program_test.sort_index = ProgramTests::FindMaxSortIndex.call(program: program).sort_index + 1
       program_test.save
 
-      render json: tests, each_serializer: ::TestSerializer
+      render json: tests, each_serializer: ::TestSerializer, program: program
     end
 
     def update
-      # binding.pry
       program_test_params[:step] ? update_sort_index : program_test.update_attributes(program_test_params)
 
 
@@ -24,7 +23,7 @@ module Admin
     def destroy
       program.program_tests.find_by(test_id: program_test_params[:test_id]).destroy
 
-      render json: tests, each_serializer: ::TestSerializer
+      render json: tests, each_serializer: ::TestSerializer, program: program
     end
 
     private
@@ -34,7 +33,11 @@ module Admin
     end
 
     def fetch_tests
-      program.tests.order("program_tests.sort_index asc")
+      program
+        .tests
+        .select("tests.id, tests.name, tests.complexity, tests.target_audience, program_tests.sort_index as sort_index,
+          program_tests.program_id as program_id")
+        .order("program_tests.sort_index asc")
     end
 
     def program_test_params

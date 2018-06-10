@@ -1,6 +1,10 @@
 class TestSerializer < BaseSerializer
-  attributes :id, :name, :complexity, :target_audience, :sort_index, :program_test_id,
-    :increase_index_link_avaliable?, :decrease_index_link_avaliable?
+  attributes :id, :name, :complexity, :target_audience, :sort_index, :program_test_id, :sort_index,
+    :increase_index_link_avaliable?, :decrease_index_link_avaliable?, :day_number
+
+  def day_number
+    program_test.day_number
+  end
 
   def increase_index_link_avaliable?
     program_test.sort_index != max_sort_index
@@ -17,7 +21,7 @@ class TestSerializer < BaseSerializer
   private
 
   def program_test
-    object.program_tests.find_by(program: program)
+    object.program_tests.find_by(program: program, sort_index: object.sort_index)
   end
 
   def program

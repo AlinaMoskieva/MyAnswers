@@ -1,7 +1,7 @@
 - if @tests.length
   ol
     - $.each @tests, (i, test) =>
-      li.js-test-item.test-item data-id=test.id data-program-test-id=test.program_test_id
+      li.program-test-item.test-item data-id=test.id data-program-test-id=test.program_test_id
         - if test["increase_index_link_avaliable?"]
           a.increase-sort-index href="#" ↓
         - else
@@ -11,5 +11,5 @@
         - else
           ' &nbsp;&nbsp;
         =< test.name
-        input(name="day_number" id="day_number" type="text" class="day-number")
+        input(name="day_number" id="day_number" type="text" class="day-number" value=test.day_number)
         a.remove-test href="#" Удалить
