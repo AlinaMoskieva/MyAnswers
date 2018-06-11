@@ -5,4 +5,8 @@ class QuestionDecorator < ApplicationDecorator
   def added?(test)
     test.test_questions.find_by(question: object)
   end
+
+  def test_question(test)
+    test.test_questions.find_by(test: object) || TestQuestion.new
+  end
 end

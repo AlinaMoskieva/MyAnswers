@@ -19,6 +19,10 @@ module Admin
     end
 
     def create
+      test.complexity = "Низкая"
+      test.save
+
+      respond_with test, location: edit_admin_test_path(test), flash: false
     end
 
     def edit
@@ -30,7 +34,7 @@ module Admin
       if test.errors.any?
         render json: { error: test.errors.full_messages.join(", ") }, status: :unprocessable_entity
       else
-        respond_with test, location: admin_edit_test_path
+        render json: test, serializer: ::TestSerializer
       end
     end
 
@@ -41,7 +45,7 @@ module Admin
     end
 
     def test_params
-      params.require(:test).permit(:complexity,
+      params.require(:test).permit(:complexity, :name, :unit_id,
         repetitions_attributes: %i[id number rule period_number period_rule _destroy])
     end
 

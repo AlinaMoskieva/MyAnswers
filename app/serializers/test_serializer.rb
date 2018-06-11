@@ -3,18 +3,26 @@ class TestSerializer < BaseSerializer
     :increase_index_link_avaliable?, :decrease_index_link_avaliable?, :day_number
 
   def day_number
+    return unless program
+
     program_test.day_number
   end
 
   def increase_index_link_avaliable?
+    return unless program
+
     program_test.sort_index != max_sort_index
   end
 
   def decrease_index_link_avaliable?
+    return unless program
+
     program_test.sort_index != min_sort_index
   end
 
   def program_test_id
+    return unless program
+
     program_test.id
   end
 

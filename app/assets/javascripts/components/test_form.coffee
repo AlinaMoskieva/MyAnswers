@@ -2,6 +2,7 @@ class TestForm extends Components.Base
   refs:
     complexityInput: "#test_complexity"
     widgetInput: ".test-question__widget"
+    successMessage: ".success-message"
 
   initialize: ->
     @testId = @$el.data("id")
@@ -18,6 +19,8 @@ class TestForm extends Components.Base
       data:
         test:
           complexity: @$refs.complexityInput["0"].value
+      success: (response) =>
+        @_showSuccessMessage()
 
   _saveWidget: (event) =>
     @testQuestionId = event.currentTarget.closest(".js-test-question").dataset["id"]
@@ -28,12 +31,20 @@ class TestForm extends Components.Base
       data:
         test_question:
           widget_id: event.currentTarget.value
+      success: (response) =>
+        @_showSuccessMessage()
 
   _testPath: =>
-    "/tests/#{@testId}.json"
+    "/admin/tests/#{@testId}.json"
 
   _testQuestionPath: =>
     "/admin/test_questions/#{@testQuestionId}.json"
+
+  _showSuccessMessage: =>
+    @$refs.successMessage.removeClass("hidden").delay(1000).queue((next) ->
+        $(this).addClass("hidden");
+        next();
+    );
 
 $ ->
   new TestForm($el) for $el in $(".js-test-form")

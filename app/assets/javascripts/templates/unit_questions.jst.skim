@@ -4,4 +4,4 @@
       li.question-item data-id=question.id
         = question.text
         ' &nbsp;
-        a href = "#" +
+        / a href = "#" +
