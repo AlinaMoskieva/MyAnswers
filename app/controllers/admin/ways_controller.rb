@@ -2,7 +2,7 @@ module Admin
   class WaysController < BaseController
     skip_before_action :verify_authenticity_token
 
-    expose :ways, from: :test
+    expose :ways, :fetch_ways
     expose :way
     expose :test, id: -> { way_params[:test_id] }
 
@@ -30,6 +30,13 @@ module Admin
     end
 
     private
+
+    def fetch_ways
+      arr1 = test.ways.joins(:next_test_question).where(test_questions: { in_scenario: true })
+      arr2 = test.ways.joins(:current_test_question).where(test_questions: { in_scenario: true })
+
+      arr1 & arr2
+    end
 
     def assign_attributes
       test_id = way_params[:test_id]

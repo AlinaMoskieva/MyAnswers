@@ -3,13 +3,13 @@ module Admin
     skip_before_action :verify_authenticity_token
 
     expose_decorated :test_question
-    expose :questions, :fetch_questions
+    expose :test_questions, :fetch_test_questions
     expose :test, id: -> { test_question_params[:test_id] }
 
     respond_to :json
 
     def index
-      render json: questions, each_serializer: ::QuestionSerializer
+      render json: test_questions, each_serializer: ::TestQuestionSerializer
     end
 
     def create
@@ -45,8 +45,8 @@ module Admin
     def update_scenario
     end
 
-    def fetch_questions
-      test.test_questions.where(in_scenario: true).map { |tq| tq.question }.uniq
+    def fetch_test_questions
+      test.test_questions.where(in_scenario: true)
     end
 
     def test_question_params
