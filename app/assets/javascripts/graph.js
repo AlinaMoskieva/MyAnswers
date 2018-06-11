@@ -46,8 +46,6 @@ function addToScenario(event) {
 function removeFromScenario(event) {
   event.preventDefault();
 
-
-
   var testQuestionId = event.target.dataset["id"];
 
   var xhr = new XMLHttpRequest();
@@ -87,6 +85,7 @@ function removeNode(testQuestionId) {
   removedNode = nodes.find( function(node) { return node.testQuestionId == testQuestionId } );
   nodes.splice(nodes.indexOf(removedNode), 1);
 
+  // nodes = getNodes();
   links = getLinks();
 
   restart();
@@ -114,7 +113,9 @@ function getNodes() {
   var nodes_arr = [];
 
   nodes.forEach(function(node) {
-    nodes_arr.push({id: node.id, index: node.index, reflexive: false });
+    nodes_arr.push({
+      id: node.question_id, index: node.question_index, testQuestionId: node.id, reflexive: false
+    });
   });
 
   return nodes_arr;
