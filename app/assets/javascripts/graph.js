@@ -16,35 +16,29 @@ var svg = d3.select('body')
 
 function addToScenario(event) {
   event.preventDefault();
-  event.target.parentElement.classList.add("hidden");
 
-  var testId = event.target.closest(".js-test-form").dataset["id"];
-  var questionId = event.target.closest(".js-unit-question").dataset["id"];
+  var testQuestionId = event.target.dataset["id"];
 
   var xhr = new XMLHttpRequest();
 
-  var body =
-    'test_question[test_id]=' + testId +
-    '&test_question[question_id]=' + questionId;
+  var body = 'test_question[in_scenario]=1';
 
-  xhr.open("POST", '/admin/test_questions.json', false);
+  xhr.open("PATCH", "/admin/test_questions/" + testQuestionId + ".json", false);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
   xhr.send(body);
 
   var resp = JSON.parse(xhr.response);
 
-  var nodeId = resp.id,
-    nodeIndex = resp.index,
-    testQuestionId = resp.test_question_id
+  var nodeId = resp.question_id,
+    nodeIndex = resp.question_index,
+    testQuestionId = resp.id
 
   if (!nodeId || !nodeId) return;
 
-  var removeFromScenarioLink = event.target.parentElement.nextElementSibling;
-
-  removeFromScenarioLink.innerHTML =
-    "<a data-id='" + testQuestionId + "' href='#' class: 'remove-from-scenario'>Удалить из сценария</a>";
-  removeFromScenarioLink.addEventListener("click", removeFromScenario);
+  var removefromScenarioLink = event.target.parentElement.nextElementSibling;
+  removefromScenarioLink.classList.remove("hidden");
+  event.target.parentElement.classList.add("hidden");
 
   showNode(nodeId, nodeIndex, testQuestionId);
 }
@@ -52,21 +46,24 @@ function addToScenario(event) {
 function removeFromScenario(event) {
   event.preventDefault();
 
-  var addToScenarioLink = event.target.parentElement.previousElementSibling;
-  addToScenarioLink.classList.remove("hidden");
+
 
   var testQuestionId = event.target.dataset["id"];
 
   var xhr = new XMLHttpRequest();
 
-  xhr.open("DELETE", "/admin/test_questions/" + testQuestionId + ".json", false);
+  var body = 'test_question[in_scenario]=0';
+
+  xhr.open("PATCH", "/admin/test_questions/" + testQuestionId + ".json", false);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-  xhr.send();
+  xhr.send(body);
+
+  var addToScenarioLink = event.target.parentElement.previousElementSibling;
+  addToScenarioLink.classList.remove("hidden");
+  event.target.parentElement.classList.add("hidden");
 
   removeNode(testQuestionId);
-
-  event.target.parentElement.innerHTML = "";
 }
 
 function showNode(id, index, testQuestionId) {

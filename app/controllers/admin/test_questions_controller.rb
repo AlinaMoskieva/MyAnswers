@@ -32,7 +32,7 @@ module Admin
       if test_question.errors.any?
         render json: { error: test_question.errors.full_messages.join(", ") }, status: :unprocessable_entity
       else
-        render json: test_question
+        render json: test_question, serializer: ::TestQuestionSerializer
       end
     end
 
@@ -42,12 +42,15 @@ module Admin
 
     private
 
+    def update_scenario
+    end
+
     def fetch_questions
-      test.test_questions.map { |tq| tq.question }.uniq
+      test.test_questions.where(in_scenario: true).map { |tq| tq.question }.uniq
     end
 
     def test_question_params
-      params.require(:test_question).permit(:widget_id, :question_id, :test_id)
+      params.require(:test_question).permit(:widget_id, :question_id, :test_id, :in_scenario)
     end
   end
 end
