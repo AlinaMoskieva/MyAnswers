@@ -1,8 +1,11 @@
 .js-unit-question data={ id: unit_question.id }
   li
     => unit_question.text
+    = simple_form_for([:admin, unit_question.test_question(test)]) do |f|
+      = f.input :widget_id, collection: Widget.select(:id, :description), label_method: :description,
+        input_html: { class: "test-question__widget" }, include_blank: true, label: "Виджет"
     .add-to-scenario class=(unit_question.added?(test) ? "hidden" : "")
-      = link_to "Добавить в сценарий", "#"
+      = link_to "Добавить в сценарий", "#", class: "add-question"
     .remove-from-scenario
       - if unit_question.added?(test)
-        = link_to "Удалить из сценария", "#", data: { id: unit_question.added?(test).id }
+        = link_to "Удалить из сценария", "#", data: { id: unit_question.added?(test).id }, class: "remove-question"
