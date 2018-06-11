@@ -1,8 +1,11 @@
 .js-test-question data={ id: test_question.id }
   li
     => test_question.question_text
-    = link_to "Добавить в сценарий", "#", class: "add-to-scenario"
-
-  = simple_form_for([:admin, test_question]) do |f|
-    = f.input :widget_id, collection: Widget.select(:id, :description), label_method: :description,
-      input_html: { class: "test-question__widget" }, include_blank: false, selected: test_question.widget_id
+    = simple_form_for([:admin, test_question]) do |f|
+      = f.input :widget_id, collection: Widget.select(:id, :description), label_method: :description,
+        input_html: { class: "test-question__widget" }, include_blank: false, label: "Виджет",
+        selected: test_question.widget_id
+    .add-to-scenario class=(test_question.added? ? "hidden" : "")
+      = link_to "Добавить в сценарий", "#", data: { id: test_question.id }, class: "add-question"
+    .remove-from-scenario class=(test_question.added? ? "" : "hidden")
+      = link_to "Удалить из сценария", "#", data: { id: test_question.id }, class: "remove-question"
