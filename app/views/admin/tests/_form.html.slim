@@ -1,7 +1,8 @@
 = simple_form_for([:admin, test.to_model]) do |f|
-  .test-settings-block
-    h4 = t(".general_settings")
-    = f.input :name, input_html: { value: "Полином Жегалкина"}
+  - if test.to_model.new_record?
+    .test-settings-block
+      h4 = t(".general_settings")
+      = f.input :name
 
   .test-settings-block
     = f.input :unit_id, collection: Unit.select(:id, :name), label_method: :name, include_blank: false,
@@ -26,13 +27,6 @@
         .links
           = link_to_add_association t(".add_period"), f, :repetitions, class: "hollow button small"
 
-    .test-settings-block
-      h4 = t(".questions")
-      ol
-        .unit-quiestions
-          - if test_questions.present?
-            = render partial: "test_question", collection: test_questions
-
   - if test.to_model.new_record?
     .test-settings-block
       h4 = t(".questions")
@@ -43,4 +37,11 @@
           - else
             ' Пожалуйста, выберите модуль
 
-    = f.button :submit, t(".save"), class: "hollow button"
+  = f.button :submit, t(".save"), class: "hollow button"
+
+  .test-settings-block
+    h4 = t(".questions")
+    ol
+      .unit-quiestions
+        - if test_questions.present?
+          = render partial: "test_question", collection: test_questions

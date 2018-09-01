@@ -29,6 +29,8 @@ module Admin
     def update
       test_question.update(test_question_params)
 
+      # remove_ways if test_question_params[:in_scenario] == "0"
+
       if test_question.errors.any?
         render json: { error: test_question.errors.full_messages.join(", ") }, status: :unprocessable_entity
       else
@@ -42,7 +44,9 @@ module Admin
 
     private
 
-    def update_scenario
+    def remove_ways
+      test.ways.where(current_test_question: test_question).destroy_all
+      test.ways.where(next_test_question: test_question).destroy_all
     end
 
     def fetch_test_questions
